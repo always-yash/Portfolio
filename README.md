@@ -102,7 +102,7 @@ Portfolio/
 │   ├── theme.js
 │   └── projects.js
 │
-├── Assets/
+├── assets/
 │   ├── Hero-Preview-Desktop.png
 │   ├── Hero-Preview-Mobile.png
 │
