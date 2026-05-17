@@ -1,0 +1,94 @@
+@keyframes pulse {
+    70% {
+        box-shadow: 0 0 0 0.7rem rgba(34, 197, 94, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+@keyframes ripple {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(28);
+    }
+}
+
+@keyframes floatSphere {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-1rem) rotate(7deg);
+    }
+}
+
+@keyframes scrollCue {
+    0% {
+        opacity: 0;
+        transform: translateY(-0.38rem) rotate(45deg);
+    }
+    45% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0.38rem) rotate(45deg);
+    }
+}
+
+@keyframes scrollDot {
+    0% {
+        opacity: 0.12;
+        transform: translateY(-0.35rem) scale(0.86);
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0.42rem) scale(0.72);
+    }
+}
+
+@keyframes spinBorder {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.loaded .hero-orbit-one {
+    animation: orbitDrift 18s linear infinite;
+}
+
+.loaded .hero-orbit-two {
+    animation: orbitDrift 22s linear infinite reverse;
+}
+
+@keyframes orbitDrift {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .fade-up {
+        opacity: 1;
+        transform: none;
+    }
+}

@@ -1,0 +1,206 @@
+@media (max-width: 980px) {
+    .site-nav {
+        top: 0.65rem;
+        width: min(calc(100% - 1rem), 720px);
+    }
+
+    .nav-links {
+        position: absolute;
+        top: calc(100% + 0.6rem);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+    }
+
+    .menu-open .nav-links {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 1rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .button-compact {
+        display: none;
+    }
+
+    .hero-content,
+    .two-column,
+    .modal-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        min-height: auto;
+    }
+
+    .hero-visual {
+        min-height: 28rem;
+    }
+
+    .chapter-marker {
+        position: relative;
+        top: auto;
+    }
+
+    .stack-grid,
+    .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .section-heading {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        text-align: left;
+    }
+
+    .section-heading .filter-group {
+        margin-top: 0;
+    }
+
+    .project-card {
+        flex-basis: min(68vw, 27rem);
+    }
+
+    .side-left {
+        left: 0.75rem;
+    }
+
+    .side-right {
+        right: 0.75rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .hero {
+        min-height: auto;
+        padding: 6.7rem 1rem 4.2rem;
+    }
+
+    .hero-content,
+    .section-shell,
+    .footer-inner {
+        width: 100%;
+    }
+
+    .hero-title {
+        max-width: 11ch;
+        font-size: clamp(3rem, 14vw, 4.5rem);
+    }
+
+    .hero-actions,
+    .skills-header,
+    .footer-inner {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .hero-visual {
+        min-height: 24rem;
+        border-radius: 1rem;
+    }
+
+    .floating-panel {
+        min-width: 8.5rem;
+        padding: 0.8rem;
+    }
+
+    .panel-a {
+        left: 5%;
+        top: 8%;
+    }
+
+    .panel-b {
+        right: 5%;
+        top: 44%;
+    }
+
+    .panel-c {
+        left: 8%;
+        bottom: 8%;
+    }
+
+    .stack-grid,
+    .skills-grid,
+    .modal-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        flex-basis: 84vw;
+    }
+
+    .edge-carousel-wrap {
+        margin-inline: -1rem;
+    }
+
+    .project-grid {
+        padding-inline: 1rem;
+    }
+
+    .side-carousel-button {
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+
+    .project-visual {
+        min-height: 13rem;
+    }
+
+    .destination-card {
+        width: 9rem;
+        height: 6.8rem;
+    }
+
+    .modal-visual {
+        min-height: 16rem;
+    }
+
+    .theme-toggle {
+        right: 0.8rem;
+        bottom: 0.8rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .brand {
+        gap: 0.45rem;
+        padding-left: 0.35rem;
+    }
+
+    .hero-title {
+        font-size: 3.45rem;
+    }
+
+    .filter-group {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .filter-button {
+        flex: 1;
+    }
+
+    .contact {
+        min-height: auto;
+        padding-top: 4.8rem;
+    }
+
+}
