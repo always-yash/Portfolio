@@ -34,7 +34,7 @@ The goal was simple:
 
 | Desktop | Mobile |
 |---|---|
-| <img src=".\Assets\Hero-Preview-Desktop.png" width="400" > | <img src=".\Assets\Hero-Preview-Mobile.png" width="400"> |
+| <img src=".\Assets\Hero-Preview-Desktop.png" height="400" > | <img src=".\Assets\Hero-Preview-Mobile.png" height="400"> |
 
 ---
 
