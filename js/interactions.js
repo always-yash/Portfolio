@@ -5,31 +5,68 @@
     const navLinksWrap = document.querySelector(".nav-links");
     const cursorGlow = document.querySelector(".cursor-glow");
     const projectGrid = document.querySelector(".project-grid");
+    const worksSection = document.querySelector(".works");
+    let projectLoopEnabled = false;
 
     if (projectGrid) {
         const originalCards = Array.from(projectGrid.children);
+        const cloneCards = [];
 
         originalCards.slice().reverse().forEach((card) => {
             const clone = card.cloneNode(true);
             clone.classList.remove("fade-up");
             clone.dataset.clone = "true";
-            projectGrid.prepend(clone);
+            cloneCards.push({ clone, position: "prepend" });
         });
 
         originalCards.forEach((card) => {
             const clone = card.cloneNode(true);
             clone.classList.remove("fade-up");
             clone.dataset.clone = "true";
-            projectGrid.appendChild(clone);
+            cloneCards.push({ clone, position: "append" });
         });
 
         const centerProjectTrack = () => {
             projectGrid.scrollLeft = projectGrid.scrollWidth / 3;
         };
 
-        requestAnimationFrame(centerProjectTrack);
+        const enableProjectLoop = () => {
+            if (projectLoopEnabled) {
+                return;
+            }
+
+            cloneCards.filter(({ position }) => position === "prepend").forEach(({ clone }) => {
+                projectGrid.prepend(clone);
+            });
+
+            cloneCards.filter(({ position }) => position === "append").forEach(({ clone }) => {
+                projectGrid.appendChild(clone);
+            });
+
+            projectLoopEnabled = true;
+            worksSection?.classList.remove("is-filtered");
+            requestAnimationFrame(centerProjectTrack);
+        };
+
+        const disableProjectLoop = () => {
+            cloneCards.forEach(({ clone }) => clone.remove());
+            projectLoopEnabled = false;
+            worksSection?.classList.add("is-filtered");
+            projectGrid.scrollLeft = 0;
+        };
+
+        projectGrid.projectLoopControls = {
+            enable: enableProjectLoop,
+            disable: disableProjectLoop
+        };
+
+        enableProjectLoop();
 
         projectGrid.addEventListener("scroll", () => {
+            if (!projectLoopEnabled) {
+                return;
+            }
+
             const loopWidth = projectGrid.scrollWidth / 3;
 
             if (projectGrid.scrollLeft < loopWidth * 0.45) {
@@ -135,12 +172,18 @@
             document.querySelectorAll(".filter-button").forEach((item) => item.classList.remove("active"));
             button.classList.add("active");
 
+            if (filter === "all") {
+                projectGrid?.projectLoopControls?.enable();
+            } else {
+                projectGrid?.projectLoopControls?.disable();
+            }
+
             document.querySelectorAll(".project-card").forEach((card) => {
                 const show = filter === "all" || card.dataset.category === filter;
                 card.classList.toggle("is-hidden", !show);
             });
 
-            if (projectGrid) {
+            if (projectGrid && filter === "all") {
                 requestAnimationFrame(() => {
                     projectGrid.scrollTo({ left: projectGrid.scrollWidth / 3, behavior: "smooth" });
                 });
@@ -152,7 +195,7 @@
         button.addEventListener("click", () => {
             const carousel = projectGrid;
             const visibleCard = carousel?.querySelector(".project-card:not(.is-hidden)");
-            if (!carousel || !visibleCard) {
+            if (!carousel || !visibleCard || !projectLoopEnabled) {
                 return;
             }
 

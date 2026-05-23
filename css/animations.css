@@ -52,12 +52,6 @@
     }
 }
 
-@keyframes spinBorder {
-    to {
-        transform: rotate(1turn);
-    }
-}
-
 .fade-up {
     opacity: 0;
     transform: translateY(40px);

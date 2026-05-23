@@ -71,6 +71,30 @@
                 end: "bottom top"
             }
         });
+
+        const chapterMotion = document.querySelector("#about .chapter-motion");
+
+        if (chapterMotion) {
+            gsap.to(chapterMotion, {
+                y: () => {
+                    const section = document.getElementById("about");
+                    if (!section) {
+                        return 0;
+                    }
+
+                    const available = section.offsetHeight - chapterMotion.offsetHeight - 180;
+                    return Math.max(0, Math.min(available, window.innerHeight * 0.42));
+                },
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#about",
+                    start: "top top+=96",
+                    end: "bottom bottom",
+                    scrub: true,
+                    invalidateOnRefresh: true
+                }
+            });
+        }
     } else {
         document.querySelectorAll(".fade-up").forEach((element) => {
             element.style.opacity = "1";
@@ -100,8 +124,13 @@
             
             // Visual feedback matching your GSAP aesthetic
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerText;
-            submitBtn.innerText = "LINKING...";
+            const submitLabel = submitBtn.querySelector('.button-label');
+            const originalText = submitLabel ? submitLabel.textContent : submitBtn.textContent;
+            if (submitLabel) {
+                submitLabel.textContent = "LINKING...";
+            } else {
+                submitBtn.textContent = "LINKING...";
+            }
             submitBtn.style.opacity = "0.7";
 
             const formData = new FormData(contactForm);
@@ -117,9 +146,17 @@
 
             if (error) {
                 console.error("Connection Error:", error.message);
-                submitBtn.innerText = "RETRY";
+                if (submitLabel) {
+                    submitLabel.textContent = "RETRY";
+                } else {
+                    submitBtn.textContent = "RETRY";
+                }
             } else {
-                submitBtn.innerText = "RECEIVED";
+                if (submitLabel) {
+                    submitLabel.textContent = "RECEIVED";
+                } else {
+                    submitBtn.textContent = "RECEIVED";
+                }
                 contactForm.reset();
                 
                 // Add a small GSAP "Success" pop if you want
@@ -130,7 +167,11 @@
 
             // Reset button text after 3 seconds
             setTimeout(() => {
-                submitBtn.innerText = originalText;
+                if (submitLabel) {
+                    submitLabel.textContent = originalText;
+                } else {
+                    submitBtn.textContent = originalText;
+                }
                 submitBtn.style.opacity = "1";
             }, 3000);
         });

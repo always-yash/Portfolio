@@ -9,6 +9,8 @@
     --accent: #0f766e;
     --accent-warm: #c46a2b;
     --accent-cool: #2563eb;
+    --sage: #A2B59F;
+    --pink: #D6C3C3;
     --shadow: 0 24px 80px rgba(20, 20, 20, 0.12);
     --font-main: "Greycliff CF", "Inter", sans-serif;
 }
@@ -653,6 +655,7 @@ img {
 }
 
 .chapter {
+    min-height: 100svh;
     background: var(--surface);
 }
 
@@ -687,6 +690,11 @@ img {
     position: sticky;
     top: 8rem;
     align-self: start;
+}
+
+.chapter-motion {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
 }
 
 .chapter-marker h2,
@@ -740,21 +748,19 @@ img {
     inset: 0;
     z-index: 0;
     border-radius: inherit;
-    background: conic-gradient(from 90deg, transparent, color-mix(in srgb, var(--accent) 26%, transparent), transparent, color-mix(in srgb, var(--accent-warm) 20%, transparent), transparent);
-    opacity: 0;
-    transition: opacity 0.35s ease;
+    background:
+        radial-gradient(circle at 20% 18%, color-mix(in srgb, var(--pink) 24%, transparent), transparent 34%),
+        radial-gradient(circle at 82% 78%, color-mix(in srgb, var(--sage) 28%, transparent), transparent 36%),
+        linear-gradient(135deg, color-mix(in srgb, var(--sage) 18%, transparent), color-mix(in srgb, var(--pink) 18%, transparent));
+    opacity: 0.7;
+    transform: none;
+    animation: none;
 }
 
 .stack-card > *,
 .skill-category > * {
     position: relative;
     z-index: 1;
-}
-
-.stack-card:hover::before,
-.skill-category:hover::before {
-    opacity: 1;
-    animation: spinBorder 3s linear infinite;
 }
 
 .stack-card span {
@@ -798,8 +804,8 @@ img {
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     background:
-        radial-gradient(circle at 12% 25%, color-mix(in srgb, var(--accent-warm) 12%, transparent), transparent 26%),
-        radial-gradient(circle at 92% 72%, color-mix(in srgb, var(--accent-cool) 12%, transparent), transparent 30%);
+        radial-gradient(circle at 12% 25%, color-mix(in srgb, var(--sage) 18%, transparent), transparent 26%),
+        radial-gradient(circle at 92% 72%, color-mix(in srgb, var(--pink) 18%, transparent), transparent 30%);
 }
 
 .skills-header {
@@ -885,6 +891,29 @@ img {
     padding: 0.1rem max(1rem, calc((100vw - 1180px) / 2)) 0.4rem;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+}
+
+.works.is-filtered .edge-carousel-wrap {
+    width: min(calc(100% - 2rem), 1180px);
+    margin-inline: auto;
+}
+
+.works.is-filtered .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    overflow: visible;
+    padding: 0;
+    scroll-snap-type: none;
+}
+
+.works.is-filtered .project-card {
+    flex: initial;
+    scroll-snap-align: none;
+}
+
+.works.is-filtered .side-carousel-button {
+    display: none;
 }
 
 .project-grid::-webkit-scrollbar {
@@ -1211,13 +1240,34 @@ img {
 }
 
 .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
     width: fit-content;
     color: var(--text-soft);
     font-weight: 700;
 }
 
+.contact-links svg {
+    flex: 0 0 1.15rem;
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.contact-links a:nth-child(3) svg,
+.contact-links a:nth-child(4) svg {
+    fill: currentColor;
+    stroke: none;
+}
+
 .contact-links a:hover {
     color: var(--text);
+    transform: translateX(4px);
 }
 
 .contact-form {
@@ -1229,6 +1279,14 @@ img {
 .contact-form label {
     display: grid;
     gap: 0.5rem;
+}
+
+.contact-form label:has(textarea) {
+    margin-bottom: 1.1rem;
+}
+
+.contact-form label:last-of-type {
+    margin-bottom: 1.1rem;
 }
 
 .contact-form label span {
@@ -1250,6 +1308,15 @@ img {
     padding: 0.9rem 1rem;
     resize: vertical;
     transition: border 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.contact-form .button {
+    align-items: center;
+    white-space: nowrap;
+}
+
+.contact-form .button span {
+    flex: 0 0 auto;
 }
 
 .contact-form input:focus,

@@ -63,12 +63,16 @@
 
                     <div class="hero-actions fade-up">
                         <a class="button button-primary magnetic ripple" href="#works" data-scroll-target="works">
-                            <span>View systems</span>
+                            <span>View projects</span>
                             <span class="button-icon" aria-hidden="true">-></span>
                         </a>
                         <a class="button button-secondary magnetic ripple" href="https://github.com/always-yash" target="_blank" rel="noreferrer">
                             <span>GitHub</span>
                             <span class="button-icon" aria-hidden="true">^</span>
+                        </a>
+                        <a class="button button-secondary magnetic ripple" href="https://www.linkedin.com/in/always-yash/" target="_blank" rel="noreferrer">
+                            <span>LinkedIn</span>
+                            <span class="button-icon" aria-hidden="true">in</span>
                         </a>
                     </div>
 
@@ -116,8 +120,10 @@
         <section class="chapter section-observed" id="about">
             <div class="section-shell two-column">
                 <aside class="chapter-marker fade-up">
-                    <span>Chapter 01</span>
-                    <h2>Structure before spectacle.</h2>
+                    <div class="chapter-motion">
+                        <span>Chapter 01</span>
+                        <h2>Structure before spectacle.</h2>
+                    </div>
                 </aside>
 
                 <div class="chapter-content">
@@ -126,6 +132,9 @@
                     </p>
                     <p class="fade-up">
                         My work sits between systems tinkering, front-end engineering, product thinking, and expressive visual design. I care about interfaces that feel alive, tools that waste less effort, and technology that can be understood below the surface.
+                    </p>
+                    <p class="fade-up">
+                        Alongside my academic work, I have built multiple projects, earned 13+ certifications, participated in 3+ hackathons, reached the Top 15 in one of them, and maintained an 8.1 CGPA to date.
                     </p>
 
                     <div class="stack-grid fade-up">
@@ -286,13 +295,26 @@
                     <h2>Build the next interface with intention.</h2>
                     <p>For collaborations, product builds, systems work, and motion-led interfaces.</p>
                     <div class="contact-links">
-                        <a href="mailto:c.zero.workspace@gmail.com">c.zero.workspace@gmail.com</a>
-                        <a href="tel:+918502006448">+91 8502006448</a>
-                        <a href="https://github.com/always-yash" target="_blank" rel="noreferrer">github.com/always-yash</a>
+                        <a href="mailto:c.zero.workspace@gmail.com">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.75 5.75h14.5v12.5H4.75z"/><path d="m5.25 6.25 6.75 6 6.75-6"/></svg>
+                            <span>c.zero.workspace@gmail.com</span>
+                        </a>
+                        <a href="tel:+918502006448">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 4.75 9.5 4.2l2 4.6-1.65 1.1a9.1 9.1 0 0 0 4.25 4.25l1.1-1.65 4.6 2-.55 2.3c-.22.93-1.08 1.55-2.03 1.45C10.65 17.55 6.45 13.35 5.75 6.78c-.1-.95.52-1.81 1.45-2.03Z"/></svg>
+                            <span>+91 8502006448</span>
+                        </a>
+                        <a href="https://github.com/always-yash" target="_blank" rel="noreferrer">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.75a8.25 8.25 0 0 0-2.6 16.08c.4.07.55-.17.55-.38v-1.42c-2.22.48-2.69-1.07-2.69-1.07-.37-.93-.9-1.17-.9-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.88.87 2.34.66.07-.52.28-.87.51-1.07-1.77-.2-3.63-.89-3.63-3.94 0-.87.31-1.58.82-2.14-.08-.2-.36-1.02.08-2.11 0 0 .67-.22 2.2.82A7.6 7.6 0 0 1 12 8.58c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.09.16 1.91.08 2.11.51.56.82 1.27.82 2.14 0 3.06-1.87 3.73-3.65 3.93.29.25.55.74.55 1.49v1.75c0 .21.15.46.56.38A8.25 8.25 0 0 0 12 3.75Z"/></svg>
+                            <span>github.com/always-yash</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/always-yash/" target="_blank" rel="noreferrer">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.75 9.25h3v9h-3zM7.25 5.25a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5ZM11 9.25h2.85v1.23h.04c.4-.75 1.36-1.48 2.81-1.48 3 0 3.55 1.98 3.55 4.55v4.7h-3v-4.17c0-1-.02-2.27-1.38-2.27-1.39 0-1.6 1.08-1.6 2.19v4.25H11z"/></svg>
+                            <span>linkedin.com/in/always-yash</span>
+                        </a>
                     </div>
                 </div>
 
-                <form id="contact-form" class="contact-form fade-up" id="contactForm">
+                <form id="contact-form" class="contact-form fade-up">
                     <label>
                         <span>Name</span>
                         <input name="name" type="text" placeholder="Your name" required>
@@ -306,7 +328,7 @@
                         <textarea name="message" rows="4" placeholder="Tell me what you want to build..." required></textarea>
                     </label>
                     <button class="button button-primary ripple" type="submit">
-                        <span>Send Message</span>
+                        <span class="button-label">Send Message</span>
                         <span class="button-icon" aria-hidden="true">-></span>
                     </button>
                     <p class="form-status" role="status" aria-live="polite"></p>
