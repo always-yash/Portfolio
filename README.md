@@ -33,7 +33,7 @@ The goal was simple:
 [Click Here for Redirection](https://yashchoudhary-portfolio.vercel.app/)
 
 | Desktop | Mobile |
-|---|---|
+|----|----|
 | <img src=".\Assets\Hero-Preview-Desktop.png" height="400" > | <img src=".\Assets\Hero-Preview-Mobile.png" height="400"> |
 
 ---
