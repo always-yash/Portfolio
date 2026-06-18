@@ -882,6 +882,7 @@ img {
 .edge-carousel-wrap {
     position: relative;
     margin-inline: calc((100vw - min(calc(100vw - 2rem), 1180px)) / -2);
+    overflow: visible;
 }
 
 .project-grid {
