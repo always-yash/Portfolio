@@ -113,7 +113,8 @@
             });
         }, 2000);
     });
-        VanillaTilt.init(document.querySelectorAll("[data-tilt-card]"), {
+
+    if (window.VanillaTilt && !prefersReducedMotion) {
             max: 7,
             speed: 700,
             glare: true,

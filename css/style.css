@@ -339,7 +339,7 @@ img {
 
 .hero {
     position: relative;
-    min-height: 92svh;
+    min-height: 100svh;
     padding: 7.2rem 1.25rem 4.4rem;
     overflow: hidden;
 }
@@ -592,21 +592,9 @@ img {
 .scroll-cue {
     position: absolute;
     left: 50%;
-    bottom: 2rem;
+    bottom: 2.5rem;
     z-index: 2;
     transform: translateX(-50%);
-}
-
-.scroll-track {
-    width: 1.4rem;
-    height: 2.6rem;
-    border: 2px solid var(--text);
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--surface) 60%, transparent);
-    display: flex;
-    justify-content: center;
-    padding-top: 0.4rem;
-    overflow: hidden;
 }
 
 .scroll-dot {
@@ -614,7 +602,7 @@ img {
     height: 0.5rem;
     border-radius: 50%;
     background: var(--text);
-    animation: scrollFall 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: breath 2.5s ease-in-out infinite;
     will-change: transform, opacity;
 }
 

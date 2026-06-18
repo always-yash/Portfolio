@@ -27,28 +27,11 @@
     }
 }
 
-@keyframes scrollFall {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    50% {
-        transform: translateY(0.9rem);
-        opacity: 0;
-    }
-
-    75% {
-        transform: translateY(-0.2rem);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+@keyframes breath {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
 }
- 
+
 .fade-up {
     opacity: 0;
     transform: translateY(40px);
