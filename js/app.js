@@ -102,7 +102,17 @@
         });
     }
 
-    if (window.VanillaTilt && !prefersReducedMotion) {
+    // Safety: ensure .fade-up elements are visible even if GSAP fails
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+            document.querySelectorAll(".fade-up").forEach(function (el) {
+                if (getComputedStyle(el).opacity === "0") {
+                    el.style.opacity = "1";
+                    el.style.transform = "none";
+                }
+            });
+        }, 2000);
+    });
         VanillaTilt.init(document.querySelectorAll("[data-tilt-card]"), {
             max: 7,
             speed: 700,

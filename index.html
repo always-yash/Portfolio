@@ -120,8 +120,10 @@
                 </div>
             </div>
 
-            <div class="scroll-cue">
-                <div class="scroll-dot"></div>
+            <div class="scroll-cue" aria-hidden="true">
+                <div class="scroll-track">
+                    <div class="scroll-dot"></div>
+                </div>
             </div>
         </section>
 
@@ -433,11 +435,11 @@
         </article>
     </div>
 
-    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="https://unpkg.com/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
-    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" onerror="window.__gsapFailed=true"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" onerror="window.__scrollTriggerFailed=true"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" onerror="window.__lenisFailed=true"></script>
+    <script src="https://unpkg.com/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js" onerror="window.__tiltFailed=true"></script>
+    <script src="https://unpkg.com/split-type" onerror="window.__splitTypeFailed=true"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 

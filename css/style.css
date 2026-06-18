@@ -339,7 +339,7 @@ img {
 
 .hero {
     position: relative;
-    min-height: 100svh;
+    min-height: 92svh;
     padding: 7.2rem 1.25rem 4.4rem;
     overflow: hidden;
 }
@@ -589,15 +589,33 @@ img {
     bottom: 1rem;
 }
 
-.scroll-dot {
+.scroll-cue {
     position: absolute;
-    bottom: 3rem;
     left: 50%;
-    width: 6px;
-    height: 6px;
+    bottom: 2rem;
+    z-index: 2;
+    transform: translateX(-50%);
+}
+
+.scroll-track {
+    width: 1.4rem;
+    height: 2.6rem;
+    border: 2px solid var(--text);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--surface) 60%, transparent);
+    display: flex;
+    justify-content: center;
+    padding-top: 0.4rem;
+    overflow: hidden;
+}
+
+.scroll-dot {
+    width: 0.5rem;
+    height: 0.5rem;
     border-radius: 50%;
     background: var(--text);
-    animation: breath 4s infinite ease-in-out;
+    animation: scrollFall 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    will-change: transform, opacity;
 }
 
 .chapter,
