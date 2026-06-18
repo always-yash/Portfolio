@@ -3,44 +3,55 @@ window.portfolioProjects = {
         title: "Artisaan",
         kicker: "Culture system",
         visualClass: "artisaan",
-        description: "A culturally-driven digital platform focused on preserving and modernizing artisan ecosystems through immersive storytelling, layered content architecture, and system-focused design.",
+        description: "Bridging the digital divide for India's 200+ million artisans through AI-powered marketplace solutions that preserve cultural heritage while enabling global reach.",
         metrics: [
-            ["48", "Story nodes"],
-            ["6", "Craft clusters"],
-            ["3", "Motion states"]
+            ["200M+", "Artisans reached"],
+            ["AI", "Powered matching"],
+            ["MIT", "Licensed"]
         ]
     },
     pravasa: {
         title: "Pravasa",
         kicker: "Travel interface",
         visualClass: "pravasa",
-        description: "An experience-oriented travel interface engineered around fluid navigation, discovery systems, animated route previews, and modern visual storytelling.",
+        description: "An interactive travel guide to Keralam built with fluid navigation, discovery systems and modern visual storytelling for immersive trip planning.",
         metrics: [
-            ["12", "Routes"],
-            ["24", "Destinations"],
-            ["5", "Preview modes"]
+            ["14", "Districts mapped"],
+            ["Live", "Deployment"],
+            ["TS", "TypeScript"]
         ]
     },
-    rootline: {
-        title: "Rootline",
-        kicker: "Systems lab",
-        visualClass: "rootline",
-        description: "A compact systems workspace for ROM research, kernel notes, rooting flows, and performance experiments across devices.",
+    intenttab: {
+        title: "Intent-tab",
+        kicker: "Browser extension",
+        visualClass: "intenttab",
+        description: "A purpose-driven new tab browser extension that replaces your default tab with intentional focus tools, productivity widgets and mindful browsing.",
         metrics: [
-            ["9", "Build notes"],
-            ["4", "Device flows"],
-            ["18%", "Tuning gain"]
+            ["Focus", "First design"],
+            ["CSS", "Vanilla stack"],
+            ["Open", "Source"]
         ]
     },
-    auraops: {
-        title: "AuraOps",
-        kicker: "AI interface",
-        visualClass: "auraops",
-        description: "An AI-assisted operations interface for prompt workflows, structured outputs, and fast human-in-the-loop decisions.",
+    skytel: {
+        title: "SkyTel Solutions",
+        kicker: "Telecom platform",
+        visualClass: "skytel",
+        description: "A full-stack telecom solutions platform powering connectivity services with scalable infrastructure, customer management and service delivery systems.",
         metrics: [
-            ["7", "AI flows"],
-            ["3", "Review states"],
-            ["2x", "Decision speed"]
+            ["Full", "Stack"],
+            ["Live", "Platform"],
+            ["Scale", "Ready"]
+        ]
+    },
+    fleeca: {
+        title: "Fleeca TPMS",
+        kicker: "Fleet management",
+        visualClass: "fleeca",
+        description: "A Tyre Pressure Monitoring System dashboard for Fleeca — real-time fleet tracking, pressure analytics and predictive maintenance for vehicle fleets.",
+        metrics: [
+            ["Real-time", "Monitoring"],
+            ["IoT", "Integrated"],
+            ["TS", "TypeScript"]
         ]
     }
 };
