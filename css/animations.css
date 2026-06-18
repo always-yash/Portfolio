@@ -24,32 +24,11 @@
     }
 }
 
-@keyframes scrollCue {
-    0% {
-        opacity: 0;
-        transform: translateY(-0.38rem) rotate(45deg);
-    }
-    45% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(0.38rem) rotate(45deg);
-    }
-}
-
-@keyframes scrollDot {
-    0% {
-        opacity: 0.12;
-        transform: translateY(-0.35rem) scale(0.86);
-    }
-    50% {
-        opacity: 0.3;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(0.42rem) scale(0.72);
-    }
+@keyframes scrollFall {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(0.9rem); opacity: 0; }
+  75% { transform: translateY(-0.2rem); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 .fade-up {

@@ -247,15 +247,6 @@
         }
     });
 
-    const form = document.getElementById("contactForm");
-    const formStatus = document.querySelector(".form-status");
-
-    form?.addEventListener("submit", (event) => {
-        event.preventDefault();
-        formStatus.textContent = "Message staged. Yash will get back to you soon.";
-        form.reset();
-    });
-
     function updateClock() {
         const clock = document.getElementById("liveClock");
         if (!clock) {

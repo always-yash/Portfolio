@@ -339,7 +339,7 @@ img {
 
 .hero {
     position: relative;
-    min-height: 92svh;
+    min-height: 100svh;
     padding: 7.2rem 1.25rem 4.4rem;
     overflow: hidden;
 }
@@ -358,7 +358,7 @@ img {
     grid-template-columns: minmax(0, 0.94fr) minmax(21rem, 0.74fr);
     gap: clamp(3rem, 8vw, 7rem);
     align-items: center;
-    min-height: calc(92svh - 11.6rem);
+    min-height: calc(100svh - 11.6rem);
 }
 
 .status-pill,
@@ -394,7 +394,7 @@ img {
     max-width: 11ch;
     margin: 0;
     font-size: clamp(3.25rem, 6.6vw, 6.35rem);
-    line-height: 0.94;
+    line-height: 1.125;
     font-weight: 800;
     letter-spacing: -0.045em;
 }
@@ -592,66 +592,39 @@ img {
 .scroll-cue {
     position: absolute;
     left: 50%;
-    bottom: 1.4rem;
+    bottom: 2rem;
     z-index: 2;
-    display: inline-grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-    gap: 0.65rem;
-    padding: 0.5rem 0.52rem 0.5rem 0.85rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--surface) 78%, transparent);
-    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(14px);
-    color: var(--text-soft);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
     transform: translateX(-50%);
 }
 
-.scroll-cue i {
-    position: relative;
-    display: grid;
-    width: 2.35rem;
-    height: 1.55rem;
-    place-items: center;
-    border: 1px solid var(--border-strong);
+.scroll-track {
+    width: 1.4rem;
+    height: 2.6rem;
+    border: 2px solid #1a1a1a;
     border-radius: 999px;
-    background: color-mix(in srgb, var(--surface) 72%, transparent);
+    background: rgba(0, 0, 0, 0.04);
+    display: flex;
+    justify-content: center;
+    padding-top: 0.4rem;
+    box-sizing: border-box;
     overflow: hidden;
 }
 
-.scroll-cue i::after {
-    content: "";
-    position: absolute;
-    width: 0.48rem;
-    height: 0.48rem;
-    border-right: 2px solid var(--accent);
-    border-bottom: 2px solid var(--accent);
-    background: transparent;
-    transform: translateY(-0.18rem) rotate(45deg);
-    animation: scrollCue 1.55s cubic-bezier(.16,1,.3,1) infinite;
-}
-
-.scroll-cue i::before {
-    content: "";
-    position: absolute;
-    width: 0.35rem;
-    height: 0.35rem;
+.scroll-dot {
+    width: 0.6rem;
+    height: 0.6rem;
     border-radius: 50%;
-    background: var(--accent);
-    opacity: 0.28;
-    transform: translateY(-0.25rem);
-    animation: scrollDot 1.55s cubic-bezier(.16,1,.3,1) infinite;
+    background: #1a1a1a;
+    animation: scrollFall 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    will-change: transform, opacity;
 }
 
 .chapter,
 .works,
 .contact {
-    padding: clamp(5rem, 9vw, 8rem) 1.25rem;
+    padding-top: clamp(6rem, 7.5vw, 9rem);
+    padding-bottom: clamp(6rem, 6vw, 9rem);
+    padding-inline: 1.25rem;
 }
 
 .chapter {
@@ -692,10 +665,12 @@ img {
     align-self: start;
 }
 
+/* LOCKED - do not modify .chapter-motion - perfect definition */
 .chapter-motion {
     will-change: transform;
     transform: translate3d(0, 0, 0);
 }
+/* END LOCKED */
 
 .chapter-marker h2,
 .section-heading h2,
@@ -798,9 +773,51 @@ img {
     transform: translateY(-3px) scale(1.04);
 }
 
+.evidence-strip {
+    padding: clamp(2rem, 2.5vw, 3rem);
+    margin: clamp(3.5rem, 4vw, 5rem) 1.25rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+}
+
+.evidence-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    flex-wrap: wrap;
+}
+
+.evidence-item {
+    display: grid;
+    gap: 0.15rem;
+    text-align: center;
+}
+
+.evidence-label {
+    color: var(--text-soft);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.evidence-item strong {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+
+.evidence-item small {
+    color: var(--text-soft);
+    font-size: 0.72rem;
+}
+
 .skills-band {
-    margin-top: clamp(5rem, 8vw, 7rem);
-    padding: clamp(3.2rem, 5.5vw, 4.6rem) 0;
+    margin-top: clamp(1rem, 2vw, 2rem);
+    padding: clamp(2rem, 2.4vw, 3rem) 0;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     background:
@@ -818,7 +835,7 @@ img {
 
 .skills-header h3 {
     max-width: 31rem;
-    margin: 0;
+    margin-bottom: 2rem;
     font-size: clamp(1.8rem, 3vw, 2.6rem);
     line-height: 1.05;
     letter-spacing: -0.03em;
@@ -1197,6 +1214,7 @@ img {
     overflow: hidden;
     line-height: 1.55;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
