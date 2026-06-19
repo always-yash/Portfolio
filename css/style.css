@@ -931,8 +931,8 @@ img {
 }
 
 .works.is-filtered .edge-carousel-wrap {
-    width: min(calc(100vw - 2rem), 1180px);
-    margin-inline: auto;
+    width: min(calc(100% - 2rem), 1180px);
+    margin: 0 auto;
 }
 
 .works.is-filtered .project-grid {
