@@ -100,6 +100,15 @@
         margin-top: 0;
     }
 
+    .works.is-filtered .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .works.is-filtered .edge-carousel-wrap {
+        width: min(calc(100% - 2rem), 1180px);
+        margin: 0 auto;
+    }
+
     .side-left {
         left: 0.75rem;
     }
@@ -206,6 +215,11 @@
 
     .edge-carousel-wrap {
         margin-inline: -1rem;
+    }
+
+    .works.is-filtered .edge-carousel-wrap {
+        width: 100%;
+        margin: 0 auto;
     }
 
     .project-grid {
