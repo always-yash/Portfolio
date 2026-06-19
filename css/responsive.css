@@ -1,3 +1,24 @@
+@media (max-width: 1100px) {
+    .hero-content {
+        gap: clamp(2rem, 5vw, 4rem);
+    }
+
+    .hero-visual {
+        min-height: min(50vh, 30rem);
+    }
+
+    .floating-panel {
+        min-width: 9rem;
+        padding: 0.85rem;
+    }
+
+    .footer-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
 @media (max-width: 980px) {
     .site-nav {
         top: 0.65rem;
@@ -35,28 +56,36 @@
         display: none;
     }
 
-    .hero-content,
-    .two-column,
-    .modal-panel {
+    .hero-content {
         grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 3rem;
     }
 
-    .hero-content {
-        min-height: auto;
+    .hero-copy {
+        order: 1;
     }
 
     .hero-visual {
+        order: 2;
         min-height: 28rem;
+    }
+
+    .hero-title {
+        max-width: 14ch;
+    }
+
+    .hero-actions {
+        justify-content: flex-start;
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
     }
 
     .chapter-marker {
         position: relative;
         top: auto;
-    }
-
-    .stack-grid,
-    .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .section-heading {
@@ -71,24 +100,17 @@
         margin-top: 0;
     }
 
-    .project-card {
-        flex-basis: min(68vw, 27rem);
-    }
-
-    .works.is-filtered .project-grid {
+    .stack-grid,
+    .skills-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .side-left {
-        left: 0.75rem;
+    .contact .two-column {
+        gap: 3rem;
     }
 
-    .side-right {
-        right: 0.75rem;
-    }
-
-    .works.is-filtered .project-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .contact-copy h2 {
+        max-width: none;
     }
 }
 
@@ -121,17 +143,17 @@
     }
 
     .hero-visual {
-        min-height: 24rem;
+        min-height: 22rem;
         border-radius: 1rem;
     }
 
     .floating-panel {
-        min-width: 8.5rem;
-        padding: 0.8rem;
+        min-width: 8rem;
+        padding: 0.7rem;
     }
 
-    .works.is-filtered .project-grid {
-        grid-template-columns: 1fr;
+    .floating-panel strong {
+        font-size: 0.95rem;
     }
 
     .panel-a {
@@ -150,9 +172,24 @@
     }
 
     .stack-grid,
-    .skills-grid,
-    .modal-metrics {
+    .skills-grid {
         grid-template-columns: 1fr;
+    }
+
+    .skills-header {
+        gap: 1rem;
+    }
+
+    .skills-header h3 {
+        margin-bottom: 0;
+    }
+
+    .evidence-inner {
+        gap: 1.5rem;
+    }
+
+    .evidence-item strong {
+        font-size: 1.2rem;
     }
 
     .project-card {
@@ -163,18 +200,10 @@
         margin-inline: -1rem;
     }
 
-    .works.is-filtered .edge-carousel-wrap {
-        width: 100%;
-        margin-inline: auto;
-    }
-
     .project-grid {
         padding-inline: 1rem;
-    }
-
-    .works.is-filtered .project-grid {
-        grid-template-columns: 1fr;
-        padding: 0;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
     }
 
     .side-carousel-button {
@@ -186,13 +215,13 @@
         min-height: 13rem;
     }
 
-    .destination-card {
-        width: 9rem;
-        height: 6.8rem;
+    .contact {
+        min-height: auto;
+        padding-top: 4.8rem;
     }
 
-    .modal-visual {
-        min-height: 16rem;
+    .contact-links {
+        gap: 0.85rem;
     }
 
     .theme-toggle {
@@ -201,14 +230,85 @@
     }
 }
 
-@media (max-width: 420px) {
-    .brand {
-        gap: 0.45rem;
-        padding-left: 0.35rem;
+@media (max-width: 480px) {
+    .hero {
+        padding: 6rem 0.85rem 3.5rem;
     }
 
     .hero-title {
-        font-size: 3.45rem;
+        font-size: clamp(2.5rem, 12vw, 3.45rem);
+    }
+
+    .hero-intro {
+        font-size: 0.95rem;
+    }
+
+    .hero-actions {
+        gap: 0.65rem;
+    }
+
+    .skill-ticker {
+        gap: 0.5rem;
+        margin-top: 2.5rem;
+    }
+
+    .skill-ticker span {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.7rem;
+    }
+
+    .hero-visual {
+        min-height: 18rem;
+    }
+
+    .floating-panel {
+        min-width: 7rem;
+        padding: 0.6rem;
+        border-radius: 0.75rem;
+    }
+
+    .floating-panel strong {
+        font-size: 0.85rem;
+    }
+
+    .floating-panel small {
+        font-size: 0.65rem;
+    }
+
+    .panel-a {
+        left: 4%;
+        top: 6%;
+    }
+
+    .panel-b {
+        right: 4%;
+        top: 40%;
+    }
+
+    .panel-c {
+        left: 6%;
+        bottom: 6%;
+    }
+
+    .evidence-strip {
+        margin: 2.5rem 0.85rem;
+        padding: 1.5rem;
+    }
+
+    .evidence-inner {
+        gap: 1rem;
+    }
+
+    .evidence-item strong {
+        font-size: 1.1rem;
+    }
+
+    .evidence-label {
+        font-size: 0.6rem;
+    }
+
+    .section-heading {
+        margin-bottom: 1rem;
     }
 
     .filter-group {
@@ -220,9 +320,68 @@
         flex: 1;
     }
 
-    .contact {
-        min-height: auto;
-        padding-top: 4.8rem;
+    .project-card {
+        flex-basis: 88vw;
+        min-width: 220px;
     }
 
+    .project-visual {
+        min-height: 11rem;
+    }
+
+    .project-body {
+        padding: 0.85rem;
+    }
+
+    .project-body h3 {
+        font-size: clamp(1.2rem, 5vw, 1.6rem);
+    }
+
+    .contact-copy h2 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .contact-copy p {
+        font-size: 0.9rem;
+    }
+
+    .contact-form {
+        padding: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.8rem 0.85rem;
+    }
+
+    .footer-inner {
+        gap: 0.75rem;
+    }
+
+    .footer-inner p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-visual {
+        min-height: 15rem;
+    }
+
+    .floating-panel {
+        display: none;
+    }
+
+    .project-card {
+        flex-basis: 92vw;
+        min-width: 200px;
+    }
+
+    .evidence-item strong {
+        font-size: 1rem;
+    }
 }
