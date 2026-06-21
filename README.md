@@ -30,7 +30,7 @@ The goal was simple:
 
 ## Preview
 
-[Click Here for Redirection](https://yashchoudhary-portfolio.vercel.app/)
+[Click Here for Redirection](https://yc-vault.vercel.app/)
 
 | Desktop | Mobile |
 |----|----|
