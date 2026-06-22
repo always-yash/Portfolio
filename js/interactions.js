@@ -6,78 +6,61 @@
     const cursorGlow = document.querySelector(".cursor-glow");
     const projectGrid = document.querySelector(".project-grid");
     const worksSection = document.querySelector(".works");
-    let projectLoopEnabled = false;
 
-    if (projectGrid) {
-        const originalCards = Array.from(projectGrid.children);
-        const cloneCards = [];
+    const projectSwiper = new Swiper(".project-swiper", {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        speed: 700,
+        effect: "slide",
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 24,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 32,
+            },
+        },
+        on: {
+            init: function () {
+                this.slides.forEach((slide, idx) => {
+                    slide.style.transitionDelay = `${idx * 80}ms`;
+                });
+            },
+            slideChange: function () {
+                this.slides.forEach((slide) => {
+                    slide.style.transitionDelay = "0ms";
+                });
+            },
+        },
+    });
 
-        originalCards.slice().reverse().forEach((card) => {
-            const clone = card.cloneNode(true);
-            clone.classList.remove("fade-up");
-            clone.dataset.clone = "true";
-            cloneCards.push({ clone, position: "prepend" });
-        });
+    document.querySelectorAll(".filter-button").forEach((button) => {
+        button.addEventListener("click", () => {
+            const filter = button.dataset.filter;
+            document.querySelectorAll(".filter-button").forEach((item) => item.classList.remove("active"));
+            button.classList.add("active");
 
-        originalCards.forEach((card) => {
-            const clone = card.cloneNode(true);
-            clone.classList.remove("fade-up");
-            clone.dataset.clone = "true";
-            cloneCards.push({ clone, position: "append" });
-        });
-
-        const centerProjectTrack = () => {
-            projectGrid.scrollLeft = projectGrid.scrollWidth / 3;
-        };
-
-        const enableProjectLoop = () => {
-            if (projectLoopEnabled) {
-                return;
-            }
-
-            cloneCards.filter(({ position }) => position === "prepend").forEach(({ clone }) => {
-                projectGrid.prepend(clone);
+            const slides = projectSwiper.slides;
+            slides.forEach((slide) => {
+                const category = slide.dataset.category;
+                const match = filter === "all" || category === filter;
+                slide.style.display = match ? "" : "none";
             });
 
-            cloneCards.filter(({ position }) => position === "append").forEach(({ clone }) => {
-                projectGrid.appendChild(clone);
-            });
-
-            projectLoopEnabled = true;
-            worksSection?.classList.remove("is-filtered");
-            requestAnimationFrame(centerProjectTrack);
-        };
-
-        const disableProjectLoop = () => {
-            cloneCards.forEach(({ clone }) => clone.remove());
-            projectLoopEnabled = false;
-            worksSection?.classList.add("is-filtered");
-            projectGrid.scrollLeft = 0;
-        };
-
-        projectGrid.projectLoopControls = {
-            enable: enableProjectLoop,
-            disable: disableProjectLoop
-        };
-
-        enableProjectLoop();
-
-        projectGrid.addEventListener("scroll", () => {
-            if (!projectLoopEnabled) {
-                return;
-            }
-
-            const loopWidth = projectGrid.scrollWidth / 3;
-
-            if (projectGrid.scrollLeft < loopWidth * 0.45) {
-                projectGrid.scrollLeft += loopWidth;
-            }
-
-            if (projectGrid.scrollLeft > loopWidth * 1.55) {
-                projectGrid.scrollLeft -= loopWidth;
-            }
+            projectSwiper.update();
+            projectSwiper.slideTo(0);
         });
-    }
+    });
 
     function scrollToSection(id) {
         const target = document.getElementById(id);
@@ -166,41 +149,6 @@
         });
     });
 
-    document.querySelectorAll(".filter-button").forEach((button) => {
-        button.addEventListener("click", () => {
-            const filter = button.dataset.filter;
-            document.querySelectorAll(".filter-button").forEach((item) => item.classList.remove("active"));
-            button.classList.add("active");
-
-            document.querySelectorAll(".project-card").forEach((card) => {
-                const isClone = card.dataset.clone === "true";
-                if (isClone) {
-                    card.remove();
-                    return;
-                }
-                const show = filter === "all" || card.dataset.category === filter;
-                card.classList.toggle("is-hidden", !show);
-            });
-
-            if (filter === "all") {
-                enableProjectLoop();
-            }
-        });
-    });
-
-    document.querySelectorAll("[data-carousel]").forEach((button) => {
-        button.addEventListener("click", () => {
-            const carousel = projectGrid;
-            if (!carousel) return;
-            const visibleCard = carousel.querySelector(".project-card:not(.is-hidden)");
-            if (!visibleCard) return;
-            const gap = parseFloat(getComputedStyle(carousel).gap) || 32;
-            const step = visibleCard.getBoundingClientRect().width + gap;
-            const direction = button.dataset.carousel === "next" ? 1 : -1;
-            carousel.scrollBy({ left: step * direction, behavior: "smooth" });
-        });
-    });
-
     const modal = document.getElementById("projectModal");
     const modalVisual = document.getElementById("modalVisual");
     const modalThumbs = document.getElementById("modalThumbs");
@@ -222,7 +170,7 @@
         document.body.style.overflow = "";
     }
 
-    projectGrid?.addEventListener("click", (event) => {
+    document.querySelector(".project-swiper")?.addEventListener("click", (event) => {
         const card = event.target.closest(".project-card[data-open-project]");
         if (!card || event.target.closest("a")) return;
         const project = window.portfolioProjects?.[card.dataset.openProject];

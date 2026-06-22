@@ -100,23 +100,6 @@
         margin-top: 0;
     }
 
-    .works.is-filtered .project-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .works.is-filtered .edge-carousel-wrap {
-        width: min(calc(100% - 2rem), 1180px);
-        margin: 0 auto;
-    }
-
-    .side-left {
-        left: 0.75rem;
-    }
-
-    .side-right {
-        right: 0.75rem;
-    }
-
     .stack-grid,
     .skills-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -209,40 +192,14 @@
         font-size: 1.2rem;
     }
 
-    .project-card {
-        flex-basis: 84vw;
-    }
-
-    .edge-carousel-wrap {
-        margin-inline: -1rem;
-    }
-
-    .works.is-filtered .edge-carousel-wrap {
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    .project-grid {
-        padding-inline: 1rem;
-        padding-top: 2rem;
-        padding-bottom: 4rem;
-    }
-
-    .side-carousel-button {
-        width: 2.75rem;
-        height: 2.75rem;
-    }
-
-    .side-left {
-        left: 0.5rem;
-    }
-
-    .side-right {
-        right: 0.5rem;
-    }
-
     .project-visual {
         min-height: 13rem;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 2.75rem;
+        height: 2.75rem;
     }
 
     .contact {
@@ -350,26 +307,14 @@
         flex: 1;
     }
 
-    .project-card {
-        flex-basis: 88vw;
-        min-width: 220px;
-    }
-
-    .side-carousel-button {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-
-    .side-left {
-        left: 0.35rem;
-    }
-
-    .side-right {
-        right: 0.35rem;
-    }
-
     .project-visual {
         min-height: 11rem;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 2.5rem;
+        height: 2.5rem;
     }
 
     .project-body {

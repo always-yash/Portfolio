@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -243,102 +244,109 @@
                 </div>
             </div>
 
-            <div class="edge-carousel-wrap">
-                <button class="side-carousel-button side-left" type="button" data-carousel="prev"
-                    aria-label="Previous project"><b>&lt;</b></button>
-                <button class="side-carousel-button side-right" type="button" data-carousel="next"
-                    aria-label="Next project"><b>&gt;</b></button>
-                <div class="project-grid">
+            <div class="swiper project-swiper">
+                <div class="swiper-wrapper">
 
-                    <article class="project-card fade-up" data-project="artisaan" data-category="Sandbox" data-tilt-card
-                        data-open-project="artisaan">
-                        <div class="project-visual artisaan-visual" aria-hidden="true">
-                            <img src="Assets/artisaan-thumbnail.png" alt="Artisaan" loading="lazy">
-                        </div>
-                        <div class="project-body">
-                            <div>
-                                <span class="project-kicker">Core system</span>
-                                <h3>Artisaan</h3>
+                    <div class="swiper-slide" data-category="Sandbox" data-project="artisaan">
+                        <article class="project-card fade-up" data-tilt-card data-open-project="artisaan">
+                            <div class="project-visual artisaan-visual" aria-hidden="true">
+                                <img src="Assets/artisaan-thumbnail.png" alt="Artisaan" loading="lazy">
                             </div>
-                            <p>Bridging the digital divide for India's 200+ million artisans through AI-powered
-                                marketplace solutions that preserve cultural heritage while enabling global reach.</p>
-                            <a class="text-button project-open ripple" href="https://github.com/always-yash/Artisaan"
-                                target="_blank" rel="noreferrer">View on GitHub</a>
-                        </div>
-                    </article>
+                            <div class="project-body">
+                                <div>
+                                    <span class="project-kicker">Core system</span>
+                                    <h3>Artisaan</h3>
+                                </div>
+                                <p>Bridging the digital divide for India's 200+ million artisans through AI-powered
+                                    marketplace solutions that preserve cultural heritage while enabling global reach.</p>
+                                <a class="text-button project-open ripple" href="https://github.com/always-yash/Artisaan"
+                                    target="_blank" rel="noreferrer">View on GitHub</a>
+                            </div>
+                        </article>
+                    </div>
 
-                    <article class="project-card fade-up" data-project="intenttab" data-category="Sandbox"
-                        data-tilt-card data-open-project="intenttab">
-                        <div class="project-visual intenttab-visual" aria-hidden="true">
-                            <img src="Assets/intent-tab-thumbnail.png" alt="Intent-tab" loading="lazy">
-                        </div>
-                        <div class="project-body">
-                            <div>
-                                <span class="project-kicker">Browser extension</span>
-                                <h3>Intent-tab</h3>
+                    <div class="swiper-slide" data-category="Sandbox" data-project="intenttab">
+                        <article class="project-card fade-up" data-tilt-card data-open-project="intenttab">
+                            <div class="project-visual intenttab-visual" aria-hidden="true">
+                                <img src="Assets/intent-tab-thumbnail.png" alt="Intent-tab" loading="lazy">
                             </div>
-                            <p>A purpose-driven new tab browser extension that replaces your default tab with
-                                intentional focus tools, productivity widgets and mindful browsing.</p>
-                            <a class="text-button project-open ripple" href="https://github.com/always-yash/Intent-tab"
-                                target="_blank" rel="noreferrer">View on GitHub</a>
-                        </div>
-                    </article>
+                            <div class="project-body">
+                                <div>
+                                    <span class="project-kicker">Browser extension</span>
+                                    <h3>Intent-tab</h3>
+                                </div>
+                                <p>A purpose-driven new tab browser extension that replaces your default tab with
+                                    intentional focus tools, productivity widgets and mindful browsing.</p>
+                                <a class="text-button project-open ripple" href="https://github.com/always-yash/Intent-tab"
+                                    target="_blank" rel="noreferrer">View on GitHub</a>
+                            </div>
+                        </article>
+                    </div>
 
-                    <article class="project-card fade-up" data-project="skytel" data-category="Core" data-tilt-card
-                        data-open-project="skytel">
-                        <div class="project-visual skytel-visual" aria-hidden="true">
-                            <img src="Assets/skytel-solutions-thumbnail.png" alt="SkyTel Solutions" loading="lazy">
-                        </div>
-                        <div class="project-body">
-                            <div>
-                                <span class="project-kicker">Telecom platform</span>
-                                <h3>SkyTel Solutions</h3>
+                    <div class="swiper-slide" data-category="Core" data-project="skytel">
+                        <article class="project-card fade-up" data-tilt-card data-open-project="skytel">
+                            <div class="project-visual skytel-visual" aria-hidden="true">
+                                <img src="Assets/skytel-solutions-thumbnail.png" alt="SkyTel Solutions" loading="lazy">
                             </div>
-                            <p>A full-stack telecom solutions platform powering connectivity services with scalable
-                                infrastructure, customer management and service delivery systems.</p>
-                            <a class="text-button project-open ripple"
-                                href="https://github.com/always-yash/SkyTel-Solutions" target="_blank"
-                                rel="noreferrer">View on GitHub</a>
-                        </div>
-                    </article>
+                            <div class="project-body">
+                                <div>
+                                    <span class="project-kicker">Telecom platform</span>
+                                    <h3>SkyTel Solutions</h3>
+                                </div>
+                                <p>A full-stack telecom solutions platform powering connectivity services with scalable
+                                    infrastructure, customer management and service delivery systems.</p>
+                                <a class="text-button project-open ripple"
+                                    href="https://github.com/always-yash/SkyTel-Solutions" target="_blank"
+                                    rel="noreferrer">View on GitHub</a>
+                            </div>
+                        </article>
+                    </div>
 
-                    <article class="project-card fade-up" data-project="fleeca" data-category="Core" data-tilt-card
-                        data-open-project="fleeca">
-                        <div class="project-visual fleeca-visual" aria-hidden="true">
-                            <img src="Assets/fleeca-thumbnail.png" alt="Fleeca TPMS" loading="lazy">
-                        </div>
-                        <div class="project-body">
-                            <div>
-                                <span class="project-kicker">TPMS Dashboard</span>
-                                <h3>Fleeca Designs</h3>
+                    <div class="swiper-slide" data-category="Core" data-project="fleeca">
+                        <article class="project-card fade-up" data-tilt-card data-open-project="fleeca">
+                            <div class="project-visual fleeca-visual" aria-hidden="true">
+                                <img src="Assets/fleeca-thumbnail.png" alt="Fleeca TPMS" loading="lazy">
                             </div>
-                            <p>A Tyre Pressure Monitoring System dashboard for Fleeca — real-time fleet tracking,
-                                pressure analytics and predictive maintenance for vehicle fleets.</p>
-                            <a class="text-button project-open ripple"
-                                href="https://github.com/always-yash/Fleeca-TPMS-Dashboard" target="_blank"
-                                rel="noreferrer">View on GitHub</a>
-                        </div>
-                    </article>
+                            <div class="project-body">
+                                <div>
+                                    <span class="project-kicker">TPMS Dashboard</span>
+                                    <h3>Fleeca Designs</h3>
+                                </div>
+                                <p>A Tyre Pressure Monitoring System dashboard for Fleeca — real-time fleet tracking,
+                                    pressure analytics and predictive maintenance for vehicle fleets.</p>
+                                <a class="text-button project-open ripple"
+                                    href="https://github.com/always-yash/Fleeca-TPMS-Dashboard" target="_blank"
+                                    rel="noreferrer">View on GitHub</a>
+                            </div>
+                        </article>
+                    </div>
 
-                    <article class="project-card fade-up" data-project="pravasa" data-category="Sandbox" data-tilt-card
-                        data-open-project="pravasa">
-                        <div class="project-visual pravasa-visual" aria-hidden="true">
-                            <img src="Assets/pravasa-keralam-thumbnail.png" alt="Pravasa" loading="lazy">
-                        </div>
-                        <div class="project-body">
-                            <div>
-                                <span class="project-kicker">Travel interface</span>
-                                <h3>Pravasa Keralam</h3>
+                    <div class="swiper-slide" data-category="Sandbox" data-project="pravasa">
+                        <article class="project-card fade-up" data-tilt-card data-open-project="pravasa">
+                            <div class="project-visual pravasa-visual" aria-hidden="true">
+                                <img src="Assets/pravasa-keralam-thumbnail.png" alt="Pravasa" loading="lazy">
                             </div>
-                            <p>An interactive travel guide to Keralam built with fluid navigation, discovery systems and
-                                modern visual storytelling for immersive trip planning.</p>
-                            <a class="text-button project-open ripple"
-                                href="https://github.com/always-yash/pravasa-keralam-map" target="_blank"
-                                rel="noreferrer">View on GitHub</a>
-                        </div>
-                    </article>
+                            <div class="project-body">
+                                <div>
+                                    <span class="project-kicker">Travel interface</span>
+                                    <h3>Pravasa Keralam</h3>
+                                </div>
+                                <p>An interactive travel guide to Keralam built with fluid navigation, discovery systems and
+                                    modern visual storytelling for immersive trip planning.</p>
+                                <a class="text-button project-open ripple"
+                                    href="https://github.com/always-yash/pravasa-keralam-map" target="_blank"
+                                    rel="noreferrer">View on GitHub</a>
+                            </div>
+                        </article>
+                    </div>
 
                 </div>
+            </div>
+
+            <div class="swiper-controls">
+                <button class="swiper-button-prev" aria-label="Previous project"></button>
+                <div class="swiper-pagination"></div>
+                <button class="swiper-button-next" aria-label="Next project"></button>
             </div>
         </section>
 
@@ -506,6 +514,8 @@
     <script src="https://unpkg.com/split-type" onerror="window.__splitTypeFailed=true"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script src="js/projects.js"></script>
     <script src="js/theme.js"></script>
