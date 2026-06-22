@@ -934,6 +934,95 @@ img {
     box-shadow: var(--shadow);
 }
 
+.side-carousel-button {
+    position: absolute;
+    top: 50%;
+    z-index: 30;
+    display: grid;
+    width: 3.5rem;
+    height: 3.5rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--border-strong) 58%, transparent);
+    border-radius: 50%;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.26)),
+        color-mix(in srgb, var(--surface) 62%, transparent);
+    box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.09),
+        inset 0 1px 0 rgba(255, 255, 255, 0.62),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px) saturate(1.45);
+    color: var(--text);
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition:
+        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.side-carousel-button:hover {
+    background:
+        linear-gradient(135deg, var(--text), var(--text));
+    color: var(--bg);
+    box-shadow:
+        0 24px 58px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.side-carousel-button:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.side-carousel-button::after {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.side-left::after {
+    content: "←";
+}
+
+.side-right::after {
+    content: "→";
+}
+
+.side-carousel-button.swiper-button-disabled {
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+body[data-theme="dark"] .side-carousel-button {
+    background:
+        linear-gradient(135deg, rgba(40, 44, 54, 0.62), rgba(20, 22, 28, 0.44)),
+        color-mix(in srgb, var(--surface) 62%, transparent);
+    box-shadow:
+        0 18px 58px rgba(0, 0, 0, 0.36),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+}
+
+body[data-theme="dark"] .side-carousel-button:hover {
+    background:
+        linear-gradient(135deg, var(--text), var(--text));
+    color: var(--bg);
+    box-shadow:
+        0 24px 58px rgba(0, 0, 0, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.side-left {
+    left: -1.5rem;
+}
+
+.side-right {
+    right: -1.5rem;
+}
+
 .swiper-nav {
     display: flex;
     align-items: center;
