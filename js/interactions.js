@@ -11,6 +11,8 @@
         slidesPerView: 1,
         spaceBetween: 24,
         speed: 700,
+        loop: true,
+        loopAdditionalSlides: 2,
         effect: "slide",
         navigation: {
             nextEl: ".swiper-button-next",
