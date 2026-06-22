@@ -882,7 +882,7 @@ img {
 
 .edge-carousel-wrap {
     position: relative;
-    margin-inline: calc((100vw - min(calc(100vw - 3rem), 1180px)) / -2);
+    margin-inline: calc((100vw - min(calc(100vw - 3rem), 1180px)) / -1.75);
 }
 
 .side-carousel-button {
@@ -921,11 +921,11 @@ img {
 }
 
 .side-left {
-    left: calc((100vw - min(calc(100vw - 3rem), 1180px)) / 2 + 1.5rem);
+    left: max(1rem, calc((100vw - 1180px) / 2 + 1rem));
 }
 
 .side-right {
-    right: calc((100vw - min(calc(100vw - 3rem), 1180px)) / 2 + 1.5rem);
+    right: max(1rem, calc((100vw - 1180px) / 2 + 1rem));
 }
 
 .project-grid {
@@ -997,7 +997,7 @@ img {
 }
 
 .project-grid::-webkit-scrollbar {
-    display: ruby;
+    display: none;
 }
 
 .project-card.is-hidden {
@@ -1008,7 +1008,7 @@ img {
     position: relative;
     min-height: 14.2rem;
     overflow: hidden;
-    border-bottom: 1px solid var(--background);
+    border-bottom: 1px solid var(--border);
 }
 
 .project-visual img {

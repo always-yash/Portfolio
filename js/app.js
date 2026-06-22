@@ -115,10 +115,13 @@
     });
 
     if (window.VanillaTilt && !prefersReducedMotion) {
-            max: 7,
-            speed: 700,
-            glare: true,
-            "max-glare": 0.12
+        document.querySelectorAll("[data-tilt-card]").forEach((el) => {
+            VanillaTilt.init(el, {
+                max: 7,
+                speed: 700,
+                glare: true,
+                "max-glare": 0.12
+            });
         });
     }
 
