@@ -4,61 +4,13 @@
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinksWrap = document.querySelector(".nav-links");
     const cursorGlow = document.querySelector(".cursor-glow");
-    const projectGrid = document.querySelector(".project-grid");
     const worksSection = document.querySelector(".works");
 
-    let projectSwiper = new Swiper(".project-swiper", {
-        effect: "cards",
-        cardsEffect: {
-            perSlideOffset: 12,
-            perSlideRotate: 2,
-            rotate: true,
-            slideShadows: true,
-        },
-        speed: 600,
-        loop: true,
-        loopAdditionalSlides: 3,
-        grabCursor: true,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        breakpoints: {
-            640: {
-                cardsEffect: {
-                    perSlideOffset: 16,
-                    perSlideRotate: 3,
-                    rotate: true,
-                    slideShadows: true,
-                },
-            },
-            1024: {
-                cardsEffect: {
-                    perSlideOffset: 20,
-                    perSlideRotate: 4,
-                    rotate: true,
-                    slideShadows: true,
-                },
-            },
-        },
-        on: {
-            init: function () {
-                this.slides.forEach((slide, idx) => {
-                    slide.style.transitionDelay = `${idx * 60}ms`;
-                });
-            },
-        },
-    });
-
     function initSwiper() {
-        if (projectSwiper) {
-            projectSwiper.destroy(true, true);
+        if (window.projectSwiper && window.projectSwiper.destroy) {
+            window.projectSwiper.destroy(true, true);
         }
-        return new Swiper(".project-swiper", {
+        window.projectSwiper = new Swiper(".project-swiper", {
             effect: "cards",
             cardsEffect: {
                 perSlideOffset: 12,
@@ -68,7 +20,6 @@
             },
             speed: 600,
             loop: true,
-            loopAdditionalSlides: 3,
             grabCursor: true,
             navigation: {
                 nextEl: ".swiper-button-next",
@@ -97,7 +48,10 @@
                 },
             },
         });
+        return window.projectSwiper;
     }
+
+    initSwiper();
 
     document.querySelectorAll(".filter-button").forEach((button) => {
         button.addEventListener("click", () => {
@@ -113,7 +67,6 @@
 
             initSwiper();
         });
-    });
     });
 
     function scrollToSection(id) {

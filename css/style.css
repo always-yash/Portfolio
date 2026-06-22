@@ -969,6 +969,11 @@ img {
     transform: translateY(-50%) scale(0.95);
 }
 
+.side-carousel-button::after {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
 .side-carousel-button.swiper-button-disabled {
     opacity: 0.25;
     pointer-events: none;
@@ -978,8 +983,16 @@ img {
     left: -1.5rem;
 }
 
+.side-left::after {
+    content: "←";
+}
+
 .side-right {
     right: -1.5rem;
+}
+
+.side-right::after {
+    content: "→";
 }
 
 @media (min-width: 1024px) {
