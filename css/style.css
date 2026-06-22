@@ -144,16 +144,7 @@ img {
         inset 0 1px 0 rgba(255, 255, 255, 0.62),
         inset 0 -1px 0 rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(20px) saturate(1.45);
-    transform: translateX(-50%) translateY(0);
-    transition:
-        transform 0.5s cubic-bezier(.16, 1, .3, 1),
-        opacity 0.5s cubic-bezier(.16, 1, .3, 1);
-}
-
-.site-nav.is-hidden {
-    transform: translateX(-50%) translateY(-120%);
-    opacity: 0;
-    pointer-events: none;
+    transform: translateX(-50%);
 }
 
 .site-nav::before,
@@ -962,6 +953,7 @@ img {
     padding: 4rem max(2.5rem) 7rem;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    --push-distance: 2.5rem;
 }
 
 .project-card {
@@ -983,12 +975,51 @@ img {
     z-index: 3;
 }
 
-.project-card:hover + .project-card {
-    transform: translateX(1.5rem);
+.project-grid:has(.project-card:hover) .project-card:not(:hover) {
+    transition:
+        transform 0.75s cubic-bezier(.16, 1, .3, 1),
+        box-shadow 0.75s cubic-bezier(.16, 1, .3, 1);
 }
 
-.project-card:has(+ .project-card:hover) {
-    transform: translateX(-1.5rem);
+.project-grid:has(.project-card:nth-child(1):hover) .project-card:nth-child(2),
+.project-grid:has(.project-card:nth-child(1):hover) .project-card:nth-child(3),
+.project-grid:has(.project-card:nth-child(1):hover) .project-card:nth-child(4),
+.project-grid:has(.project-card:nth-child(1):hover) .project-card:nth-child(5) {
+    transform: translateX(var(--push-distance));
+}
+
+.project-grid:has(.project-card:nth-child(2):hover) .project-card:nth-child(1) {
+    transform: translateX(calc(var(--push-distance) * -1));
+}
+.project-grid:has(.project-card:nth-child(2):hover) .project-card:nth-child(3),
+.project-grid:has(.project-card:nth-child(2):hover) .project-card:nth-child(4),
+.project-grid:has(.project-card:nth-child(2):hover) .project-card:nth-child(5) {
+    transform: translateX(var(--push-distance));
+}
+
+.project-grid:has(.project-card:nth-child(3):hover) .project-card:nth-child(1),
+.project-grid:has(.project-card:nth-child(3):hover) .project-card:nth-child(2) {
+    transform: translateX(calc(var(--push-distance) * -1));
+}
+.project-grid:has(.project-card:nth-child(3):hover) .project-card:nth-child(4),
+.project-grid:has(.project-card:nth-child(3):hover) .project-card:nth-child(5) {
+    transform: translateX(var(--push-distance));
+}
+
+.project-grid:has(.project-card:nth-child(4):hover) .project-card:nth-child(1),
+.project-grid:has(.project-card:nth-child(4):hover) .project-card:nth-child(2),
+.project-grid:has(.project-card:nth-child(4):hover) .project-card:nth-child(3) {
+    transform: translateX(calc(var(--push-distance) * -1));
+}
+.project-grid:has(.project-card:nth-child(4):hover) .project-card:nth-child(5) {
+    transform: translateX(var(--push-distance));
+}
+
+.project-grid:has(.project-card:nth-child(5):hover) .project-card:nth-child(1),
+.project-grid:has(.project-card:nth-child(5):hover) .project-card:nth-child(2),
+.project-grid:has(.project-card:nth-child(5):hover) .project-card:nth-child(3),
+.project-grid:has(.project-card:nth-child(5):hover) .project-card:nth-child(4) {
+    transform: translateX(calc(var(--push-distance) * -1));
 }
 
 .works.is-filtered {

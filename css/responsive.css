@@ -23,11 +23,6 @@
     .site-nav {
         top: 0.65rem;
         width: min(calc(100% - 1rem), 720px);
-        transform: translateX(-50%) translateY(0);
-    }
-
-    .site-nav.is-hidden {
-        transform: translateX(-50%) translateY(-120%);
     }
 
     .nav-links {
