@@ -1247,7 +1247,7 @@ body[data-theme="dark"] .side-carousel-button:hover {
 }
 
 .project-body h3 {
-    margin: 0.75rem 0 0.5rem;
+    margin: 0.5rem 0.75rem;
     font-size: clamp(1.42rem, 2.2vw, 2rem);
     line-height: 1;
     letter-spacing: -0.025em;
