@@ -93,6 +93,11 @@
     .hero-title {
         max-width: 12ch;
         font-size: clamp(3.15rem, 9vw, 5.4rem);
+        line-height: 1.1;
+    }
+
+    .hero-title .word {
+        line-height: 1.1;
     }
 
     .hero-visual {
@@ -151,6 +156,14 @@
     .contact-copy h2 {
         max-width: 14ch;
         font-size: clamp(2.5rem, 8vw, 4rem);
+        line-height: 1.06;
+    }
+
+    .chapter-content,
+    .hero-intro,
+    .lead,
+    .contact-copy p {
+        line-height: 1.8;
     }
 
     .stack-grid {
@@ -226,6 +239,8 @@
     }
 
     .contact-form {
+        width: 100%;
+        min-width: 0;
         max-width: 42rem;
     }
 
@@ -324,7 +339,11 @@
     .hero-title {
         max-width: 10ch;
         font-size: clamp(2.8rem, 14vw, 4.2rem);
-        line-height: 1.02;
+        line-height: 1.1;
+    }
+
+    .hero-title .word {
+        line-height: 1.1;
     }
 
     .hero-intro {
@@ -344,6 +363,14 @@
         font-size: 0.85rem;
     }
 
+    .hero-actions .button-primary {
+        flex: 1 1 100%;
+    }
+
+    .hero-actions .button-secondary {
+        flex: 1 1 auto;
+    }
+
     .skill-ticker {
         gap: 0.45rem;
         margin-top: 1.35rem;
@@ -355,7 +382,7 @@
     }
 
     .hero-visual {
-        min-height: min(78vw, 19rem);
+        min-height: min(72vw, 17rem);
         border-radius: 1.1rem;
     }
 
@@ -438,9 +465,11 @@
     .chapter-marker h2,
     .contact-copy h2 {
         font-size: clamp(2.35rem, 12vw, 3.5rem);
+        line-height: 1.08;
     }
 
     .carousel-container {
+        width: 100%;
         padding: 1.25rem 2.55rem 1rem;
     }
 
@@ -495,6 +524,8 @@
     }
 
     .contact-form {
+        width: 100%;
+        min-width: 0;
         padding: 1rem;
     }
 
@@ -528,7 +559,7 @@
     }
 
     .hero-visual {
-        min-height: 16.5rem;
+        min-height: 15.5rem;
     }
 
     .floating-panel {

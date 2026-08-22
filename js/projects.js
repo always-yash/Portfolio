@@ -83,10 +83,12 @@
             centeredSlides: true,
             loop: true,
             initialSlide: items.length,
-            speed: 750,
+            speed: 850,
+            preventInteractionOnTransition: true,
             autoplay: {
                 delay: 2400,
                 disableOnInteraction: false,
+                waitForTransition: true,
                 pauseOnMouseEnter: false
             },
             cardsEffect: {
