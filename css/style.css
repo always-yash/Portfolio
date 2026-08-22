@@ -1280,9 +1280,8 @@ body[data-theme="dark"] .theme-icon {
 }
 
 .co-developer-portfolio-avatar {
-    width: 3rem;
-    height: 3rem;
-    border-width: 3px;
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 .co-developer-link:hover .co-developer-github-avatar {
