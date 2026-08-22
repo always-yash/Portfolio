@@ -1,0 +1,611 @@
+/* Responsive layout rules: keep this file after the main stylesheets. */
+
+/* Large desktop: 1281px and above */
+@media (min-width: 1281px) {
+    .hero-content {
+        gap: clamp(3rem, 5vw, 5.5rem);
+    }
+
+    .carousel-container {
+        padding-inline: 1.5rem;
+    }
+}
+
+/* Laptop and small desktop: 769px to 1280px */
+@media (max-width: 1280px) {
+    :root {
+        --container-width: min(var(--max-width), calc(100vw - 3rem));
+    }
+
+    .hero-content {
+        grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.82fr);
+        gap: clamp(2rem, 4vw, 4rem);
+    }
+
+    .hero-title {
+        font-size: clamp(3.25rem, 6vw, 5.8rem);
+    }
+
+    .chapter-marker h2,
+    .section-heading h2,
+    .contact-copy h2 {
+        font-size: clamp(2.5rem, 5vw, 4.4rem);
+    }
+
+    .carousel-container .swiper-button-prev {
+        left: -4.25rem !important;
+    }
+
+    .carousel-container .swiper-button-next {
+        right: -4.25rem !important;
+    }
+}
+
+/* Tablet: 481px to 768px */
+@media (max-width: 768px) {
+    :root {
+        --container-width: min(var(--max-width), calc(100vw - 2rem));
+    }
+
+    .site-nav {
+        top: 0.75rem;
+        width: calc(100vw - 2rem);
+    }
+
+    .brand {
+        padding-inline: 0.35rem;
+    }
+
+    .brand > span:last-child {
+        overflow: hidden;
+        max-width: 12rem;
+        text-overflow: ellipsis;
+    }
+
+    .nav-links {
+        gap: 0.15rem;
+    }
+
+    .nav-link {
+        padding-inline: 0.65rem;
+    }
+
+    .button-compact {
+        min-height: 2.5rem;
+    }
+
+    .hero {
+        min-height: max(42rem, 100svh);
+        padding: 6rem 1rem 2rem;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        min-height: auto;
+        padding-block: 2rem 4rem;
+    }
+
+    .hero-copy {
+        max-width: 44rem;
+    }
+
+    .hero-title {
+        max-width: 12ch;
+        font-size: clamp(3.15rem, 9vw, 5.4rem);
+    }
+
+    .hero-visual {
+        width: min(100%, 42rem);
+        min-height: min(58vw, 26rem);
+        margin-inline: auto;
+    }
+
+    .hero-orbit-one {
+        width: 72vw;
+        height: 72vw;
+        right: -28vw;
+    }
+
+    .hero-orbit-two {
+        width: 52vw;
+        height: 52vw;
+        left: -24vw;
+    }
+
+    .scroll-cue {
+        bottom: 1.5rem;
+    }
+
+    .chapter,
+    .works,
+    .contact {
+        padding-inline: 1rem;
+    }
+
+    .chapter,
+    .works {
+        min-height: auto;
+    }
+
+    .chapter {
+        padding-top: 6rem;
+    }
+
+    .works {
+        padding-top: 6rem;
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .chapter-marker {
+        position: relative;
+        top: auto;
+    }
+
+    .chapter-marker h2,
+    .section-heading h2,
+    .contact-copy h2 {
+        max-width: 14ch;
+        font-size: clamp(2.5rem, 8vw, 4rem);
+    }
+
+    .stack-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .skills-header {
+        align-items: start;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .skills-header h3 {
+        margin: 0;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .evidence-strip {
+        margin-inline: 0;
+        padding-inline: 0.5rem;
+    }
+
+    .evidence-inner {
+        gap: 1.5rem 2.5rem;
+    }
+
+    .section-heading {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .project-swiper {
+        padding: 2rem 0 2.6rem;
+    }
+
+    .project-swiper .swiper-slide {
+        width: min(70vw, 20rem);
+        height: 24rem;
+    }
+
+    .project-carousel-controls {
+        padding-inline: 0.25rem;
+    }
+
+    .project-nav {
+        width: 2.85rem;
+        height: 2.85rem;
+    }
+
+    .carousel-container {
+        padding: 1.5rem 3.25rem 1.1rem;
+    }
+
+    .carousel-container .project-swiper {
+        width: min(100%, 20rem);
+        height: 26.25rem;
+    }
+
+    .carousel-container .swiper-button-prev {
+        left: -3.25rem !important;
+    }
+
+    .carousel-container .swiper-button-next {
+        right: -3.25rem !important;
+    }
+
+    .contact {
+        padding-top: 6rem;
+    }
+
+    .contact-form {
+        max-width: 42rem;
+    }
+
+    .footer-inner {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+/* Mobile: 376px to 480px */
+@media (max-width: 480px) {
+    :root {
+        --container-width: calc(100vw - 1.5rem);
+    }
+
+    .site-nav {
+        top: 0.5rem;
+        width: calc(100vw - 1rem);
+        padding: 0.4rem;
+    }
+
+    .brand {
+        gap: 0.45rem;
+        font-size: 0.84rem;
+    }
+
+    .brand-mark {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    .brand > span:last-child {
+        max-width: 9.5rem;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.2rem;
+        padding: 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        background: color-mix(in srgb, var(--surface) 94%, transparent);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+    }
+
+    .menu-open .nav-links {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 0.75rem 0.8rem;
+    }
+
+    .nav-actions {
+        gap: 0.35rem;
+    }
+
+    .button-compact {
+        min-height: 2.35rem;
+        padding-inline: 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .button-compact .button-icon {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero {
+        min-height: max(44rem, 100svh);
+        padding: 5rem 0.75rem 1.5rem;
+    }
+
+    .hero-content {
+        width: 100%;
+        gap: 2rem;
+        padding-block: 1.25rem 3rem;
+    }
+
+    .status-pill {
+        max-width: 100%;
+        margin-bottom: 1.15rem;
+        font-size: 0.78rem;
+    }
+
+    .hero-title {
+        max-width: 10ch;
+        font-size: clamp(2.8rem, 14vw, 4.2rem);
+        line-height: 1.02;
+    }
+
+    .hero-intro {
+        margin-top: 1.25rem;
+        font-size: 0.9rem;
+        line-height: 1.65;
+    }
+
+    .hero-actions {
+        gap: 0.6rem;
+        margin-top: 1.5rem;
+    }
+
+    .hero-actions .button {
+        min-height: 3rem;
+        padding-inline: 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    .skill-ticker {
+        gap: 0.45rem;
+        margin-top: 1.35rem;
+    }
+
+    .skill-ticker span {
+        padding: 0.5rem 0.65rem;
+        font-size: 0.76rem;
+    }
+
+    .hero-visual {
+        min-height: min(78vw, 19rem);
+        border-radius: 1.1rem;
+    }
+
+    .sphere-wrap {
+        inset: 8%;
+    }
+
+    .floating-panel {
+        min-width: 7rem;
+        padding: 0.65rem;
+        border-radius: 0.75rem;
+    }
+
+    .floating-panel strong {
+        font-size: 0.85rem;
+    }
+
+    .floating-panel small,
+    .panel-label {
+        font-size: 0.62rem;
+    }
+
+    .panel-a {
+        top: 8%;
+        left: 5%;
+    }
+
+    .panel-b {
+        top: 42%;
+        right: 4%;
+    }
+
+    .panel-c {
+        bottom: 7%;
+        left: 8%;
+    }
+
+    .chapter,
+    .works,
+    .contact {
+        padding-inline: 0.75rem;
+    }
+
+    .chapter,
+    .works {
+        padding-top: 5rem;
+    }
+
+    .chapter-content {
+        font-size: 0.94rem;
+        line-height: 1.75;
+    }
+
+    .stack-grid,
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stack-grid {
+        margin-top: 2rem;
+    }
+
+    .skills-band {
+        margin-inline: -0.75rem;
+        padding-inline: 0.75rem;
+    }
+
+    .evidence-inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem 0.75rem;
+        margin-inline: 0.5rem;
+    }
+
+    .evidence-item:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .section-heading h2,
+    .chapter-marker h2,
+    .contact-copy h2 {
+        font-size: clamp(2.35rem, 12vw, 3.5rem);
+    }
+
+    .carousel-container {
+        padding: 1.25rem 2.55rem 1rem;
+    }
+
+    .carousel-container .project-swiper {
+        width: min(88vw, 18.125rem);
+        height: 24.375rem;
+    }
+
+    .carousel-container .card-image {
+        flex-basis: 10.3rem;
+    }
+
+    .carousel-container .card-body {
+        padding: 1rem 1rem 1.1rem;
+    }
+
+    .carousel-container .card-title {
+        font-size: 1.4rem;
+    }
+
+    .carousel-container .card-description {
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+    }
+
+    .carousel-container .swiper-button-prev,
+    .carousel-container .swiper-button-next {
+        width: 2.7rem;
+        height: 2.7rem;
+        margin-top: -1.35rem;
+    }
+
+    .carousel-container .swiper-button-prev {
+        left: -2.55rem !important;
+    }
+
+    .carousel-container .swiper-button-next {
+        right: -2.55rem !important;
+    }
+
+    .contact {
+        min-height: auto;
+        padding-top: 5rem;
+    }
+
+    .contact-links a {
+        align-items: flex-start;
+    }
+
+    .contact-links a span {
+        overflow-wrap: anywhere;
+    }
+
+    .contact-form {
+        padding: 1rem;
+    }
+
+    .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding-block: 1.5rem;
+    }
+}
+
+/* Small mobile: 320px to 375px */
+@media (max-width: 375px) {
+    .brand > span:last-child {
+        max-width: 7.5rem;
+    }
+
+    .button-compact {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: clamp(2.55rem, 14vw, 3.5rem);
+    }
+
+    .hero-actions .button {
+        flex: 1 1 auto;
+    }
+
+    .hero-actions .button-secondary {
+        flex-grow: 0;
+    }
+
+    .hero-visual {
+        min-height: 16.5rem;
+    }
+
+    .floating-panel {
+        min-width: 6.25rem;
+        padding: 0.55rem;
+    }
+
+    .floating-panel small {
+        display: none;
+    }
+
+    .carousel-container {
+        padding-inline: 2.35rem;
+    }
+
+    .carousel-container .project-swiper {
+        width: min(88vw, 17rem);
+    }
+
+    .carousel-container .swiper-button-prev {
+        left: -2.35rem !important;
+    }
+
+    .carousel-container .swiper-button-next {
+        right: -2.35rem !important;
+    }
+}
+
+/* Mobile browser viewport protection: keep this block last for easy tuning. */
+@media (hover: none) and (pointer: coarse) {
+    html,
+    body {
+        width: 100%;
+        min-width: 0;
+        overflow-x: hidden;
+    }
+
+    .hero {
+        min-height: max(44rem, 100svh);
+        height: auto;
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+    }
+
+    .site-nav {
+        top: max(0.5rem, env(safe-area-inset-top));
+        width: calc(100vw - 1rem);
+    }
+
+    .site-footer {
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+
+    .project-swiper,
+    .carousel-container .project-swiper {
+        max-width: calc(100vw - 2rem);
+    }
+}
+
+@media (hover: none) and (pointer: coarse) and (max-width: 480px) {
+    .hero-content,
+    .section-shell,
+    .footer-inner {
+        width: min(100%, calc(100vw - 1.5rem));
+    }
+
+    .hero-visual {
+        min-height: min(78vw, 19rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
