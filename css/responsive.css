@@ -218,12 +218,18 @@
     }
 
     .carousel-container {
+        width: 100%;
         padding: 1.5rem 3.25rem 1.1rem;
     }
 
     .carousel-container .project-swiper {
         width: min(100%, 20rem);
         height: 26.25rem;
+        max-width: 100%;
+    }
+
+    .works {
+        overflow-x: clip;
     }
 
     .carousel-container .swiper-button-prev {
@@ -474,8 +480,9 @@
     }
 
     .carousel-container .project-swiper {
-        width: min(88vw, 18.125rem);
+        width: min(82vw, 18.125rem);
         height: 24.375rem;
+        max-width: 100%;
     }
 
     .carousel-container .card-image {
@@ -576,7 +583,7 @@
     }
 
     .carousel-container .project-swiper {
-        width: min(88vw, 17rem);
+        width: min(82vw, 17rem);
     }
 
     .carousel-container .swiper-button-prev {
