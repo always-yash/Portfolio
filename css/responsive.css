@@ -541,6 +541,32 @@
         flex-direction: column;
         padding-block: 1.5rem;
     }
+
+    .co-developer-strap {
+        padding-inline: 0.75rem;
+    }
+
+    .co-developer-inner {
+        gap: 0.55rem;
+    }
+
+    .co-developer-intro {
+        font-size: 0.68rem;
+    }
+
+    .co-developer-github-avatar {
+        width: 2.1rem;
+        height: 2.1rem;
+    }
+
+    .co-developer-portfolio-avatar {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .co-developer-name {
+        font-size: 0.8rem;
+    }
 }
 
 /* Small mobile: 320px to 375px */

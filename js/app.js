@@ -104,6 +104,29 @@
 
     document.querySelectorAll(".section-observed").forEach((section) => observer.observe(section));
 
+    const coDeveloperStrap = document.getElementById("co-developer-strap");
+
+    if (coDeveloperStrap) {
+        const cascadeItems = coDeveloperStrap.querySelectorAll(".co-developer-intro, .co-developer-link");
+
+        cascadeItems.forEach((item, index) => {
+            item.style.setProperty("--cascade-delay", `${index * 0.15}s`);
+        });
+
+        const coDeveloperObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                entry.target.classList.add("in-view");
+                coDeveloperObserver.unobserve(entry.target);
+            });
+        }, { threshold: 0.1 });
+
+        coDeveloperObserver.observe(coDeveloperStrap);
+    }
+
     document.addEventListener("pointermove", (event) => {
         document.documentElement.style.setProperty("--mouse-x", `${event.clientX}px`);
         document.documentElement.style.setProperty("--mouse-y", `${event.clientY}px`);
