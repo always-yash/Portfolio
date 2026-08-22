@@ -557,6 +557,42 @@
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Global horizontal breathing room: keep content 5% farther from the viewport edges. */
+@media (min-width: 769px) {
+    :root {
+        --container-width: min(var(--max-width), calc(100vw - 3.15rem));
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --container-width: min(var(--max-width), calc(100vw - 2.1rem));
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --container-width: calc(100vw - 1.575rem);
+    }
+}
+
+@media (max-width: 375px) {
+    :root {
+        --container-width: calc(100vw - 1.575rem);
+    }
+}
+
 /* Mobile browser viewport protection: keep this block last for easy tuning. */
 @media (hover: none) and (pointer: coarse) {
     html,
@@ -591,21 +627,10 @@
     .hero-content,
     .section-shell,
     .footer-inner {
-        width: min(100%, calc(100vw - 1.5rem));
+        width: min(100%, calc(100vw - 1.575rem));
     }
 
     .hero-visual {
         min-height: min(78vw, 19rem);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
     }
 }
