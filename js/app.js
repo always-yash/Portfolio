@@ -1,5 +1,120 @@
 (function () {
+    "use strict";
+
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinksWrap = document.querySelector(".nav-links");
+    const cursorGlow = document.querySelector(".cursor-glow");
+
+    function scrollToSection(id) {
+        const target = document.getElementById(id);
+
+        if (!target) {
+            return;
+        }
+
+        const offset = 92;
+
+        window.scrollTo({
+            top: target.getBoundingClientRect().top + window.scrollY - offset,
+            behavior: prefersReducedMotion ? "auto" : "smooth"
+        });
+    }
+
+    document.querySelectorAll("[data-scroll-target]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+            event.preventDefault();
+            document.body.classList.remove("menu-open");
+            menuToggle?.setAttribute("aria-expanded", "false");
+            scrollToSection(link.dataset.scrollTarget);
+        });
+    });
+
+    menuToggle?.addEventListener("click", () => {
+        const isOpen = document.body.classList.toggle("menu-open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navLinksWrap?.addEventListener("click", (event) => {
+        if (event.target.closest("a")) {
+            document.body.classList.remove("menu-open");
+            menuToggle?.setAttribute("aria-expanded", "false");
+        }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+                return;
+            }
+
+            navLinks.forEach((link) => {
+                link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
+            });
+        });
+    }, {
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: 0.01
+    });
+
+    document.querySelectorAll(".section-observed").forEach((section) => observer.observe(section));
+
+    document.addEventListener("pointermove", (event) => {
+        document.documentElement.style.setProperty("--mouse-x", `${event.clientX}px`);
+        document.documentElement.style.setProperty("--mouse-y", `${event.clientY}px`);
+
+        if (cursorGlow) {
+            cursorGlow.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+        }
+    });
+
+    document.querySelectorAll(".magnetic").forEach((element) => {
+        element.addEventListener("pointermove", (event) => {
+            if (prefersReducedMotion) {
+                return;
+            }
+
+            const rect = element.getBoundingClientRect();
+            const x = event.clientX - rect.left - rect.width / 2;
+            const y = event.clientY - rect.top - rect.height / 2;
+            element.style.transform = `translate(${x * 0.14}px, ${y * 0.18}px)`;
+        });
+
+        element.addEventListener("pointerleave", () => {
+            element.style.transform = "";
+        });
+    });
+
+    document.querySelectorAll(".ripple").forEach((element) => {
+        element.addEventListener("click", (event) => {
+            const rect = element.getBoundingClientRect();
+            const ripple = document.createElement("span");
+
+            ripple.className = "ripple-span";
+            ripple.style.left = `${event.clientX - rect.left}px`;
+            ripple.style.top = `${event.clientY - rect.top}px`;
+            element.appendChild(ripple);
+            ripple.addEventListener("animationend", () => ripple.remove());
+        });
+    });
+
+    const liveClock = document.getElementById("liveClock");
+
+    function updateClock() {
+        if (!liveClock) {
+            return;
+        }
+
+        liveClock.textContent = new Intl.DateTimeFormat("en-IN", {
+            hour: "2-digit",
+            minute: "2-digit",
+            timeZone: "Asia/Kolkata"
+        }).format(new Date());
+    }
+
+    updateClock();
+    setInterval(updateClock, 30000);
 
     window.addEventListener("load", () => {
         document.body.classList.add("loaded");
@@ -21,6 +136,13 @@
 
     if (window.SplitType && !prefersReducedMotion) {
         new SplitType("[data-split]", { types: "words, chars" });
+    }
+
+    function revealFallback() {
+        document.querySelectorAll(".fade-up").forEach((element) => {
+            element.style.opacity = "1";
+            element.style.transform = "none";
+        });
     }
 
     if (window.gsap && !prefersReducedMotion) {
@@ -78,6 +200,7 @@
             gsap.to(chapterMotion, {
                 y: () => {
                     const section = document.getElementById("about");
+
                     if (!section) {
                         return 0;
                     }
@@ -96,16 +219,12 @@
             });
         }
     } else {
-        document.querySelectorAll(".fade-up").forEach((element) => {
-            element.style.opacity = "1";
-            element.style.transform = "none";
-        });
+        revealFallback();
     }
 
-    // Safety: ensure .fade-up elements are visible even if GSAP fails
-    document.addEventListener("DOMContentLoaded", function () {
-        setTimeout(function () {
-            document.querySelectorAll(".fade-up").forEach(function (el) {
+    document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+            document.querySelectorAll(".fade-up").forEach((el) => {
                 if (getComputedStyle(el).opacity === "0") {
                     el.style.opacity = "1";
                     el.style.transform = "none";
@@ -125,71 +244,42 @@
         });
     }
 
-// 1. Initializing Supabase
-    const supabaseUrl = 'https://lnusbmtztiegustygzrh.supabase.co';
-    const supabaseKey = 'sb_publishable_TsstCVoZVMgtViL8Rq-1RA_pyFIhC4i'; 
-    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    const contactForm = document.getElementById("contact-form");
+    const contactStatus = document.querySelector(".form-status");
 
-    const contactForm = document.getElementById('contact-form');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Visual feedback matching your GSAP aesthetic
+    if (contactForm && contactStatus) {
+        contactForm.addEventListener("submit", (event) => {
+            event.preventDefault();
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const submitLabel = submitBtn.querySelector('.button-label');
-            const originalText = submitLabel ? submitLabel.textContent : submitBtn.textContent;
-            if (submitLabel) {
-                submitLabel.textContent = "LINKING...";
-            } else {
-                submitBtn.textContent = "LINKING...";
-            }
-            submitBtn.style.opacity = "0.7";
+            const label = submitBtn?.querySelector(".button-label");
+            const originalText = label ? label.textContent : submitBtn?.textContent || "Send Message";
 
-            const formData = new FormData(contactForm);
-            const { data, error } = await supabase
-                .from('contact_messages')
-                .insert([
-                    { 
-                        name: formData.get('name'), 
-                        email: formData.get('email'), 
-                        message: formData.get('message') 
-                    }
-                ]);
-
-            if (error) {
-                console.error("Connection Error:", error.message);
-                if (submitLabel) {
-                    submitLabel.textContent = "RETRY";
-                } else {
-                    submitBtn.textContent = "RETRY";
-                }
-            } else {
-                if (submitLabel) {
-                    submitLabel.textContent = "RECEIVED";
-                } else {
-                    submitBtn.textContent = "RECEIVED";
-                }
-                contactForm.reset();
-                
-                // Add a small GSAP "Success" pop if you want
-                if (window.gsap) {
-                    gsap.fromTo(submitBtn, { scale: 0.95 }, { scale: 1, duration: 0.4, ease: "back.out" });
-                }
+            if (submitBtn) {
+                submitBtn.disabled = true;
             }
 
-            // Reset button text after 3 seconds
-            setTimeout(() => {
-                if (submitLabel) {
-                    submitLabel.textContent = originalText;
-                } else {
+            if (label) {
+                label.textContent = "SENT";
+            } else if (submitBtn) {
+                submitBtn.textContent = "SENT";
+            }
+
+            contactStatus.textContent = "Message captured. Please use email or phone for the quickest reply.";
+            contactForm.reset();
+
+            window.setTimeout(() => {
+                if (label) {
+                    label.textContent = originalText;
+                } else if (submitBtn) {
                     submitBtn.textContent = originalText;
                 }
-                submitBtn.style.opacity = "1";
+
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                }
+
+                contactStatus.textContent = "";
             }, 3000);
         });
     }
- // --- SUPABASE INTEGRATION END ---
-
-})(); //
+})();
