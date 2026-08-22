@@ -6,6 +6,23 @@
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinksWrap = document.querySelector(".nav-links");
     const cursorGlow = document.querySelector(".cursor-glow");
+    let smoothScroller = null;
+    let activeNavIndex = navLinks.findIndex((link) => link.classList.contains("active"));
+
+    function animateNavSelection(link, direction) {
+        navLinks.forEach((navLink) => {
+            navLink.classList.remove("is-switching", "nav-forward", "nav-backward");
+        });
+
+        if (!navLinks.includes(link)) {
+            return;
+        }
+
+        link.classList.add("is-switching", direction === "backward" ? "nav-backward" : "nav-forward");
+        link.addEventListener("animationend", () => {
+            link.classList.remove("is-switching", "nav-forward", "nav-backward");
+        }, { once: true });
+    }
 
     function scrollToSection(id) {
         const target = document.getElementById(id);
@@ -15,6 +32,15 @@
         }
 
         const offset = 92;
+
+        if (smoothScroller) {
+            smoothScroller.scrollTo(target, {
+                offset: -offset,
+                duration: 1.45,
+                easing: (progress) => 1 - Math.pow(1 - progress, 4)
+            });
+            return;
+        }
 
         window.scrollTo({
             top: target.getBoundingClientRect().top + window.scrollY - offset,
@@ -27,6 +53,14 @@
             event.preventDefault();
             document.body.classList.remove("menu-open");
             menuToggle?.setAttribute("aria-expanded", "false");
+            const targetIndex = navLinks.indexOf(link);
+            const direction = targetIndex < activeNavIndex ? "backward" : "forward";
+
+            if (targetIndex >= 0) {
+                activeNavIndex = targetIndex;
+            }
+
+            animateNavSelection(link, direction);
             scrollToSection(link.dataset.scrollTarget);
         });
     });
@@ -49,9 +83,19 @@
                 return;
             }
 
+            const nextNavIndex = navLinks.findIndex((link) => link.getAttribute("href") === `#${entry.target.id}`);
+
             navLinks.forEach((link) => {
                 link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
             });
+
+            const activeLink = navLinks.find((link) => link.classList.contains("active"));
+
+            if (activeLink && nextNavIndex !== activeNavIndex) {
+                const direction = nextNavIndex < activeNavIndex ? "backward" : "forward";
+                activeNavIndex = nextNavIndex;
+                animateNavSelection(activeLink, direction);
+            }
         });
     }, {
         rootMargin: "-35% 0px -55% 0px",
@@ -121,13 +165,13 @@
     });
 
     if (window.Lenis && !prefersReducedMotion) {
-        const lenis = new Lenis({
+        smoothScroller = new Lenis({
             duration: 1.15,
             smoothWheel: true
         });
 
         function raf(time) {
-            lenis.raf(time);
+            smoothScroller.raf(time);
             requestAnimationFrame(raf);
         }
 

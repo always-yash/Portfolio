@@ -32,6 +32,45 @@
     50% { transform: scale(1.5); opacity: 0.5; }
 }
 
+@keyframes navSwitch {
+    0% { transform: translateY(0); }
+    35% { transform: translateY(-0.16rem); }
+    70% { transform: translateY(0.04rem); }
+    100% { transform: translateY(0); }
+}
+
+.nav-link.is-switching {
+    animation: navSwitch 0.48s cubic-bezier(.16, 1, .3, 1);
+}
+
+.nav-link.is-switching.nav-forward::after,
+.nav-link.is-switching.nav-backward::after {
+    animation-duration: 0.48s;
+    animation-timing-function: cubic-bezier(.16, 1, .3, 1);
+}
+
+.nav-link.is-switching.nav-forward::after {
+    animation-name: navUnderlineForward;
+    transform-origin: left;
+}
+
+.nav-link.is-switching.nav-backward::after {
+    animation-name: navUnderlineBackward;
+    transform-origin: right;
+}
+
+@keyframes navUnderlineForward {
+    0% { transform: scaleX(0); }
+    55% { transform: scaleX(1.08); }
+    100% { transform: scaleX(1); }
+}
+
+@keyframes navUnderlineBackward {
+    0% { transform: scaleX(0); }
+    55% { transform: scaleX(1.08); }
+    100% { transform: scaleX(1); }
+}
+
 .fade-up {
     opacity: 0;
     transform: translateY(40px);
