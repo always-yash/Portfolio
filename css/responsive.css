@@ -303,8 +303,19 @@
         display: flex;
     }
 
+    main,
+    .site-footer {
+        transition: opacity 0.35s ease;
+    }
+
+    .menu-open main,
+    .menu-open .site-footer {
+        opacity: 0.45;
+    }
+
     .nav-link {
         padding: 0.75rem 0.8rem;
+        text-align: left;
     }
 
     .nav-actions {
@@ -684,6 +695,11 @@
     .project-swiper,
     .carousel-container .project-swiper {
         max-width: calc(100vw - 2rem);
+    }
+
+    .carousel-container .swiper-button-prev,
+    .carousel-container .swiper-button-next {
+        display: none;
     }
 }
 
