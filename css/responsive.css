@@ -310,7 +310,7 @@
 
     .menu-open main,
     .menu-open .site-footer {
-        opacity: 0.45;
+        opacity: 0.24;
     }
 
     .nav-link {
@@ -545,6 +545,10 @@
         width: 100%;
         min-width: 0;
         padding: 1rem;
+    }
+
+    .name-fields {
+        grid-template-columns: 1fr;
     }
 
     .footer-inner {

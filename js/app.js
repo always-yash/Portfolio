@@ -225,7 +225,10 @@
         });
 
         document.querySelectorAll("section").forEach((section) => {
-            gsap.to(section.querySelectorAll(".fade-up"), {
+            const skillCards = section.querySelectorAll(".skill-category.fade-up");
+            const contactForm = section.querySelector(".contact-form.fade-up");
+
+            gsap.to(section.querySelectorAll(".fade-up:not(.skill-category):not(.contact-form)"), {
                 y: 0,
                 opacity: 1,
                 stagger: 0.08,
@@ -236,6 +239,39 @@
                     start: "top 72%"
                 }
             });
+
+            if (skillCards.length) {
+                gsap.to(skillCards, {
+                    x: 0,
+                    y: 0,
+                    rotation: 0,
+                    scale: 1,
+                    opacity: 1,
+                    stagger: 0.12,
+                    duration: 1.25,
+                    ease: "back.out(1.45)",
+                    scrollTrigger: {
+                        trigger: skillCards[0].closest(".skills-grid"),
+                        start: "top 78%",
+                        once: true
+                    }
+                });
+            }
+
+            if (contactForm) {
+                gsap.to(contactForm, {
+                    y: 0,
+                    scale: 1,
+                    opacity: 1,
+                    duration: 1.15,
+                    ease: "back.out(1.3)",
+                    scrollTrigger: {
+                        trigger: contactForm,
+                        start: "top 78%",
+                        once: true
+                    }
+                });
+            }
         });
 
         gsap.to(".hero-visual", {
@@ -313,40 +349,77 @@
 
     const contactForm = document.getElementById("contact-form");
     const contactStatus = document.querySelector(".form-status");
+    const supabaseUrl = "https://lnusbmtztiegustygzrh.supabase.co";
+    const supabaseAnonKey = "sb_publishable_TsstCVoZVMgtViL8Rq-1RA_pyFIhC4i";
 
     if (contactForm && contactStatus) {
-        contactForm.addEventListener("submit", (event) => {
+        contactForm.addEventListener("submit", async (event) => {
             event.preventDefault();
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const label = submitBtn?.querySelector(".button-label");
             const originalText = label ? label.textContent : submitBtn?.textContent || "Send Message";
+            const formData = new FormData(contactForm);
+            const firstName = String(formData.get("firstName") || "").trim();
+            const lastName = String(formData.get("lastName") || "").trim();
+
+            const payload = {
+                first_name: firstName,
+                last_name: lastName,
+                email: String(formData.get("email") || "").trim(),
+                message: String(formData.get("message") || "").trim()
+            };
 
             if (submitBtn) {
                 submitBtn.disabled = true;
             }
 
-            if (label) {
-                label.textContent = "SENT";
-            } else if (submitBtn) {
-                submitBtn.textContent = "SENT";
-            }
+            try {
+                const response = await fetch(`${supabaseUrl}/rest/v1/contact_messages`, {
+                    method: "POST",
+                    headers: {
+                        apikey: supabaseAnonKey,
+                        Authorization: `Bearer ${supabaseAnonKey}`,
+                        "Content-Type": "application/json",
+                        Prefer: "return=minimal"
+                    },
+                    body: JSON.stringify(payload)
+                });
 
-            contactStatus.textContent = "Message captured. Please use email or phone for the quickest reply.";
-            contactForm.reset();
-
-            window.setTimeout(() => {
-                if (label) {
-                    label.textContent = originalText;
-                } else if (submitBtn) {
-                    submitBtn.textContent = originalText;
+                if (!response.ok) {
+                    const errorDetails = await response.text();
+                    throw new Error(`Supabase request failed (${response.status}): ${errorDetails}`);
                 }
+
+                if (label) {
+                    label.textContent = "SENT";
+                } else if (submitBtn) {
+                    submitBtn.textContent = "SENT";
+                }
+
+                contactStatus.textContent = "Message sent successfully. Thanks for reaching out.";
+                contactForm.reset();
+
+                window.setTimeout(() => {
+                    if (label) {
+                        label.textContent = originalText;
+                    } else if (submitBtn) {
+                        submitBtn.textContent = originalText;
+                    }
+
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                    }
+
+                    contactStatus.textContent = "";
+                }, 3000);
+            } catch (error) {
+                console.error("Contact form submission failed:", error);
+                contactStatus.textContent = "Unable to send. Open the browser console for the Supabase error details.";
 
                 if (submitBtn) {
                     submitBtn.disabled = false;
                 }
-
-                contactStatus.textContent = "";
-            }, 3000);
+            }
         });
     }
 })();

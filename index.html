@@ -323,13 +323,19 @@
                 </div>
 
                 <form id="contact-form" class="contact-form fade-up">
-                    <label>
-                        <span>Name</span>
-                        <input name="name" type="text" placeholder="Your name" required>
-                    </label>
+                    <div class="name-fields">
+                        <label>
+                            <span>First Name</span>
+                            <input name="firstName" type="text" placeholder="Your first name" autocomplete="given-name" required>
+                        </label>
+                        <label>
+                            <span>Last Name</span>
+                            <input name="lastName" type="text" placeholder="Your last name" autocomplete="family-name" required>
+                        </label>
+                    </div>
                     <label>
                         <span>Email</span>
-                        <input name="email" type="email" placeholder="you@email.com" required>
+                        <input name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
                     </label>
                     <label>
                         <span>Project</span>
