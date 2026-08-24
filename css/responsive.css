@@ -123,12 +123,14 @@
     }
 
     .chapter,
+    .experience,
     .works,
     .contact {
         padding-inline: 1rem;
     }
 
     .chapter,
+    .experience,
     .works {
         min-height: auto;
     }
@@ -137,8 +139,13 @@
         padding-top: 6rem;
     }
 
+    .experience,
     .works {
         padding-top: 6rem;
+    }
+
+    .experience-grid {
+        grid-template-columns: 1fr;
     }
 
     .two-column {
@@ -438,14 +445,29 @@
     }
 
     .chapter,
+    .experience,
     .works,
     .contact {
         padding-inline: 0.75rem;
     }
 
     .chapter,
+    .experience,
     .works {
         padding-top: 5rem;
+    }
+
+    .experience-card {
+        padding: 1.1rem;
+    }
+
+    .experience-head h3 {
+        font-size: 1.03rem;
+    }
+
+    .experience-points {
+        padding-left: 0.95rem;
+        font-size: 0.92rem;
     }
 
     .chapter-content {

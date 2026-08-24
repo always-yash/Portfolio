@@ -297,30 +297,7 @@
             }
         });
 
-        const chapterMotion = document.querySelector("#about .chapter-motion");
-
-        if (chapterMotion) {
-            gsap.to(chapterMotion, {
-                y: () => {
-                    const section = document.getElementById("about");
-
-                    if (!section) {
-                        return 0;
-                    }
-
-                    const available = section.offsetHeight - chapterMotion.offsetHeight - 180;
-                    return Math.max(0, Math.min(available, window.innerHeight * 0.42));
-                },
-                ease: "none",
-                scrollTrigger: {
-                    trigger: "#about",
-                    start: "top top+=96",
-                    end: "bottom bottom",
-                    scrub: true,
-                    invalidateOnRefresh: true
-                }
-            });
-        }
+        // Keep Chapter 01 heading structurally fixed in its column.
     } else {
         revealFallback();
     }
