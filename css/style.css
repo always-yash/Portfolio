@@ -361,17 +361,18 @@ img {
 }
 
 .hero-title {
-    max-width: 11ch;
+    max-width: 12ch;
     margin: 0;
-    font-size: clamp(3.35rem, 6.24vw, 7rem);
-    line-height: 1.07;
+    font-size: clamp(3.35rem, 6vw, 7rem);
+    line-height: 1.08; /* Bumped slightly from 1 to prevent vertical clipping */
     font-weight: 800;
-    letter-spacing: -0.045em;
+    letter-spacing: -0.036em;
+    padding-bottom: 0.1em; /* Ensures period and descenders have space */
 }
 
 .hero-title .word {
     display: inline-block;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .hero-title .char {
@@ -906,7 +907,7 @@ img {
 
 .experience-points {
     display: grid;
-    gap: 0.6rem;
+    gap: 0.69rem;
     margin: 0;
     padding-left: 1.05rem;
     color: var(--text-soft);
