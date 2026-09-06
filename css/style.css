@@ -4,15 +4,18 @@
     --surface-raised: #fbfbf8;
     --text: #111111;
     --text-soft: #5d5d5d;
+    --text-2: #3a3a3a;
     --border: rgba(0, 0, 0, 0.08);
     --border-strong: rgba(0, 0, 0, 0.16);
     --accent: #0f766e;
+    --accent-d: #0f5f55;
     --accent-warm: #c46a2b;
     --accent-cool: #2563eb;
     --sage: #A2B59F;
     --pink: #D6C3C3;
     --shadow: 0 24px 80px rgba(20, 20, 20, 0.12);
-    --font-main: "Greycliff CF", "Inter", sans-serif;
+    --font-main: "Outfit", "Syne", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", ui-monospace, monospace;
     --max-width: 1180px;
     --container-width: min(var(--max-width), calc(100vw - 2rem));
 }
@@ -23,9 +26,11 @@ body[data-theme="dark"] {
     --surface-raised: #1f2229;
     --text: #f5f5f5;
     --text-soft: #b4b7c0;
+    --text-2: #a1a1aa;
     --border: rgba(255, 255, 255, 0.105);
     --border-strong: rgba(255, 255, 255, 0.22);
     --accent: #5eead4;
+    --accent-d: #3db89e;
     --accent-warm: #f3a261;
     --accent-cool: #8ab4ff;
     --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
@@ -54,6 +59,7 @@ body[data-theme="dark"] .cursor-glow {
 
 html {
     scroll-behavior: auto;
+    overflow-anchor: none;
 }
 
 body {
@@ -64,6 +70,7 @@ body {
     font-family: var(--font-main);
     transition: background 0.4s ease, color 0.4s ease;
     overflow-x: clip;
+    overflow-anchor: none;
 }
 
 body::before {
@@ -342,7 +349,7 @@ img {
 .status-pill {
     width: fit-content;
     gap: 0.65rem;
-    margin-bottom: 1.6rem;
+    margin-bottom: 0.8rem;
     padding: 0.62rem 0.9rem;
     border: 1px solid var(--border);
     border-radius: 999px;
@@ -363,11 +370,13 @@ img {
 .hero-title {
     max-width: 12ch;
     margin: 0;
-    font-size: clamp(3.35rem, 6vw, 7rem);
-    line-height: 1.08; /* Bumped slightly from 1 to prevent vertical clipping */
-    font-weight: 800;
-    letter-spacing: -0.036em;
-    padding-bottom: 0.1em; /* Ensures period and descenders have space */
+    font-size: clamp(3.35rem, 5.6vw, 7rem);
+    line-height: 1.08;
+    /* Bumped slightly from 1 to prevent vertical clipping */
+    font-weight: 750;
+    letter-spacing: -0.0024em;
+    padding-bottom: 0.1em;
+    /* Ensures period and descenders have space */
 }
 
 .hero-title .word {
@@ -1591,4 +1600,24 @@ body[data-theme="dark"] .theme-icon {
 
 .carousel-container .swiper-pagination {
     display: none;
+}
+
+/* Vertical Push-Fade Viewport Slot */
+.footer-msg-slot {
+  position: relative;
+  display: inline-grid;
+  grid-template-areas: "stack";
+  align-items: center;
+  justify-items: center;
+  overflow: hidden;
+  height: 1.5em; /* Constrains height to match line height */
+}
+
+.footer-location-text,
+.egg-end-msg {
+  grid-area: stack;
+  margin: 0;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  color: #a1a1aa;
 }

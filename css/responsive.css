@@ -736,7 +736,110 @@
         width: min(100%, calc(100vw - 1.575rem));
     }
 
-    .hero-visual {
-        min-height: min(78vw, 19rem);
+.hero-visual {
+      min-height: min(78vw, 19rem);
     }
+}
+
+/* Easter egg responsive adjustments */
+
+/* Tablet: 481px to 768px */
+@media (max-width: 768px) {
+  .egg-terminal__box {
+    width: min(380px, 94vw);
+    font-size: 0.82rem;
+    padding: 16px 18px;
+  }
+
+  .egg-boot {
+    padding: 24px 16px;
+    font-size: 0.78rem;
+    line-height: 1.6;
+  }
+
+  .egg-cheatsheet__box {
+    width: min(360px, 92vw);
+    padding: 18px 20px;
+  }
+
+  .egg-context-menu {
+    min-width: 160px;
+    padding: 4px;
+  }
+
+  .egg-context-menu__item {
+    font-size: 0.76rem;
+    padding: 7px 10px;
+  }
+}
+
+/* Mobile: 376px to 480px */
+@media (max-width: 480px) {
+  .egg-terminal__box {
+    width: min(320px, 92vw);
+    font-size: 0.75rem;
+    padding: 14px 16px;
+  }
+
+  .egg-terminal {
+    padding: 16px;
+  }
+
+  .egg-boot {
+    padding: 28px 12px;
+    font-size: 0.72rem;
+  }
+
+  .egg-end-msg {
+    font-size: 0.72rem;
+    padding: 14px 0 2px;
+  }
+
+  .egg-cheatsheet__box {
+    width: min(300px, 90vw);
+    padding: 16px 18px;
+    max-height: 70vh;
+  }
+
+  .egg-cheatsheet__line {
+    font-size: 0.76rem;
+    padding: 4px 0;
+  }
+
+  .egg-context-menu {
+    min-width: 140px;
+  }
+
+  .egg-context-menu__item {
+    font-size: 0.72rem;
+    padding: 6px 10px;
+  }
+}
+
+/* Small mobile: 320px to 375px */
+@media (max-width: 375px) {
+  .egg-terminal__box {
+    width: min(280px, 90vw);
+    font-size: 0.7rem;
+    padding: 12px 14px;
+  }
+
+  .egg-boot {
+    padding: 20px 10px;
+    font-size: 0.68rem;
+  }
+
+  .egg-cheatsheet__box {
+    width: min(260px, 88vw);
+    padding: 14px 16px;
+  }
+
+  .egg-context-menu {
+    min-width: 120px;
+  }
+
+  .egg-context-menu__item {
+    font-size: 0.7rem;
+    padding: 5px 8px;
+  }
 }
