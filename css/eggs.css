@@ -19,8 +19,7 @@
 .egg-logo-tip {
   position: fixed;
   z-index: 300;
-  background: 
-  ar(--text);
+  background: var(--text);
   color: var(--bg);
   font-family: var(--font-main);
   font-size: 0.78rem;
@@ -32,7 +31,7 @@
   transition: opacity 0.25s ease, transform 0.25s ease;
   white-space: nowrap;
 }
-.egg-logo-tip.show { opacity: 1; transform: translateY(0); }
+.egg-logo-tip.show { opacity: 1; transform: translateY(0); animation: egg-spin 0.5s ease-in-out infinite; }
 
 #navLogo.egg-spin { animation: eggSpin 0.6s ease; }
 @keyframes eggSpin {
@@ -200,17 +199,23 @@ html.egg-inverted {
 }
 
 /* 9. Project card long-press flip note */
+.project-card,
+.carousel-container .card,
+.swiper-slide .card {
+  position: relative !important;
+}
+
 .egg-card-flip {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  display: flex;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 99 !important;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 24px;
-  background: var(--accent);
-  color: var(--bg);
+  background: rgba(10, 10, 10, 0.95) !important; /* 95% dark background */
+  color: #f4f4f5 !important;
   font-size: 0.85rem;
   line-height: 1.5;
   border-radius: inherit;
@@ -218,17 +223,16 @@ html.egg-inverted {
   transform: scale(0.97);
   transition: opacity 0.25s ease, transform 0.25s ease;
   pointer-events: none;
-}
-.egg-card-flip.show { opacity: 1; transform: scale(1); }
-
-/* Ensure project cards and carousel cards are positioned for flip notes */
-.project-card,
-.carousel-container .card {
-  position: relative;
+  backdrop-filter: blur(4px);
 }
 
-/* 10. "yash" popup — reuses .egg-logo-tip base */
-.egg-yash-tip { z-index: 500; font-size: 0.85rem; padding: 12px 20px; }
+.egg-card-flip.show {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/* 10. code popup — reuses .egg-logo-tip base */
+.egg-code-tip { z-index: 500; font-size: 0.85rem; padding: 12px 20px; }
 
 /* 11. Custom right-click context menu */
 .egg-context-menu {
@@ -256,7 +260,7 @@ html.egg-inverted {
 .egg-context-menu__item:hover { background: var(--accent); color: var(--bg); }
 
 .mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: var(--font-mono);
 }
 
 /* 12. "eggs" cheat sheet */

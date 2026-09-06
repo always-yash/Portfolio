@@ -104,8 +104,7 @@
     });
   })();
 
-/* ── 6. Reached bottom + waited → end message vertical push ── */
-/* ── 6. Reached bottom → push egg msg UP → wait 3s → push location text UP ── */
+  /* ── 6. Reached bottom → push egg msg UP → wait 3s → push location text UP ── */
   (function () {
     const slot = document.querySelector('.footer-msg-slot');
     if (!slot) return;
@@ -120,13 +119,13 @@
         if (!timer) {
           timer = setTimeout(function () {
             slot.classList.add('active'); // Step 1: Egg msg pushes up into view
-            
+
             setTimeout(function () {
               slot.classList.remove('active');
               slot.classList.add('reset-up'); // Step 2: Location text pushes up into view
               sequenceTriggered = true; // Locks state permanently
             }, 3000); // 3-second delay
-            
+
           }, 1200);
         }
       } else {
@@ -265,24 +264,36 @@
     });
   })();
 
-  /* ── 11. Project card long-press (1.5s) → flip reveals dev note ── */
+ /* ── 11. Project card long-press (1.5s) → flip reveals dev note ── */
   (function () {
     const notes = {
       'Artisaan': "built while learning full-stack dev. half the automation came from refusing to click the same 5 buttons every day.",
       'Intent-tab': "personal productivity experiment. i built this when i needed a focused new tab that doesn't distract.",
       'SkyTel Solutions': "a challenge in architecture - building a telecom platform from scratch was wild.",
+      'Fleeca Designs': "a fleecaa project. the real work was lost to a sih ended collaboration :(",
       'TPMS Dashboard': "a fleecaa project. the real work was lost to a sih ended collaboration :(",
-      'Travel interface': "soon to be updated. stay tuned for more exciting projects!",
+      'Pravasa Keralam': "soon to be updated. stay tuned for more exciting projects!",
+      'Travel interface': "soon to be updated. stay tuned for more exciting projects!"
     };
 
-    document.querySelectorAll('.project-card, .swiper-slide .card').forEach(function (card) {
-      const indexEl = card.querySelector('.project-card__index');
+    document.querySelectorAll('.project-card, .swiper-slide .card, .card').forEach(function (card) {
+      const titleEl = card.querySelector('.card-title, .project-card__title, h3');
       const tagEl = card.querySelector('.card-tag');
-      const titleEl = card.querySelector('.card-title');
-      
-      const key = indexEl ? indexEl.textContent.trim() : (tagEl ? tagEl.textContent.trim() : null);
-      const note = key && notes[key];
-      if (!note) return;
+      const indexEl = card.querySelector('.project-card__index');
+
+      const titleText = titleEl ? titleEl.textContent.trim() : '';
+      const tagText = tagEl ? tagEl.textContent.trim() : '';
+      const indexText = indexEl ? indexEl.textContent.trim() : '';
+
+      // Find key matching title, tag, or index
+      const matchedKey = Object.keys(notes).find(key => 
+        (titleText && titleText.toLowerCase().includes(key.toLowerCase())) ||
+        (tagText && tagText.toLowerCase().includes(key.toLowerCase())) ||
+        (indexText && indexText.toLowerCase().includes(key.toLowerCase()))
+      );
+
+      if (!matchedKey) return;
+      const note = notes[matchedKey];
 
       let pressTimer = null;
       let flipEl = null;
@@ -296,14 +307,31 @@
         }
         requestAnimationFrame(function () { flipEl.classList.add('show'); });
       }
+
       function hideFlip() {
         if (flipEl) flipEl.classList.remove('show');
       }
 
-      card.addEventListener('mousedown', function () {
+      // Mouse events
+      card.addEventListener('mousedown', function (e) {
+        if (e.target.tagName === 'A') return; // Don't trigger when clicking links directly
         pressTimer = setTimeout(showFlip, 1500);
       });
-      ['mouseup', 'mouseleave'].forEach(function (evt) {
+
+      ['mouseup', 'mouseleave', 'dragstart'].forEach(function (evt) {
+        card.addEventListener(evt, function () {
+          clearTimeout(pressTimer);
+          hideFlip();
+        });
+      });
+
+      // Touch events (Mobile)
+      card.addEventListener('touchstart', function (e) {
+        if (e.target.tagName === 'A') return;
+        pressTimer = setTimeout(showFlip, 1500);
+      }, { passive: true });
+
+      ['touchend', 'touchcancel', 'touchmove'].forEach(function (evt) {
         card.addEventListener(evt, function () {
           clearTimeout(pressTimer);
           hideFlip();
@@ -312,9 +340,9 @@
     });
   })();
 
-  /* ── 12. Type "yash" → personal easter egg popup ── */
+  /* ── 12. Type "number" → personal easter egg popup ── */
   (function () {
-    const target = 'yash';
+    const target = '1048';
     let buffer = '';
     let popup = null;
 
@@ -325,8 +353,8 @@
         buffer = '';
         if (!popup) {
           popup = document.createElement('div');
-          popup.className = 'egg-logo-tip egg-yash-tip';
-          popup.textContent = "hi. you found the code. 🤍";
+          popup.className = 'egg-logo-tip egg-code-tip';
+          popup.textContent = "oh yeah. u know the thing. 🤍";
           document.body.appendChild(popup);
         }
         popup.style.left = '50%';
@@ -418,19 +446,18 @@
 
     const hints = [
       'console — check the console on load',
-      'nav logo — click it 5 times, fast',
-      '"sudo" — type it anywhere',
+      'click the navlogo 5 times - fast',
+      '"sudo" — type it anywher',
       'shift + mouse — hold and move (desktop)',
-      'scroll to the bottom — and wait a beat',
+      'scroll to the bottom — and wait a beat.',
       'footer name — double-click it',
       '"invert" — type it anywhere (again to undo)',
       '10 clicks — click anywhere, fast, 10 times',
       '"whoami" — type it anywhere',
-      'project cards — press and hold one in the carousel',
-      '"yash" — type it anywhere',
+      'type a certain number anywhere',
       'arrow up/down — jump between sections',
       'right-click — anywhere',
-      'this list — type "eggs" again to close'
+      'type "eggs" again to close - this list'
     ];
 
     document.addEventListener('keydown', function (e) {
